@@ -1,0 +1,20 @@
+.top{
+    text-align: center;
+    line-height: 45px;
+    height:45px;
+    background-color:#239BEE;
+}
+.top a{
+    font-size: 22px;
+    color: white;
+    font-weight: 600;
+}
+#info{
+    margin-top: 20px;
+}
+.bottom{
+    text-align: center;
+}
+.bottom a{
+    color: black;
+}

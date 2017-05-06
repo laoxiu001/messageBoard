@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">
+		<item value="325" key="DIALOG_WIDTH"/>
+		<item value="228" key="DIALOG_Y_ORIGIN"/>
+		<item value="1145" key="DIALOG_X_ORIGIN"/>
+		<item value="440" key="DIALOG_HEIGHT"/>
+		<item value="1|Microsoft YaHei UI|9.0|0|WINDOWS|1|-15|0|0|0|400|0|0|0|1|0|0|0|0|Microsoft YaHei UI" key="DIALOG_FONT_NAME"/>
+	</section>
+	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
+		<item value="true" key="wrap"/>
+		<item value="false" key="casesensitive"/>
+		<item value="false" key="isRegEx"/>
+		<item value="false" key="incremental"/>
+		<item value="false" key="wholeword"/>
+		<item value="Year" key="selection"/>
+		<list key="findhistory">
+			<item value="year"/>
+			<item value="）"/>
+			<item value="（"/>
+			<item value="&lt;option&gt;"/>
+			<item value="jquery"/>
+			<item value="https://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"/>
+			<item value="首页"/>
+			<item value="action"/>
+		</list>
+		<list key="replacehistory">
+			<item value=")"/>
+			<item value="("/>
+			<item value="&lt;option value=&quot;&quot;&gt;"/>
+			<item value="style=&quot;font-size: 16px width:80px&quot;"/>
+			<item value="style=&quot;font-size:16px;width:40px;&quot;"/>
+			<item value="style=&quot;font-size: 16px;width:40px&quot;"/>
+			<item value="style=&quot;font-size: 16px;width:30px&quot;"/>
+			<item value="style=&quot;font-size: 16px&quot;"/>
+		</list>
+	</section>
+	<section name="org.eclipse.ui.texteditor.GotoLineAction$GotoLineDialog_dialogBounds">
+		<item value="362" key="DIALOG_Y_ORIGIN"/>
+		<item value="692" key="DIALOG_X_ORIGIN"/>
+	</section>
+</section>

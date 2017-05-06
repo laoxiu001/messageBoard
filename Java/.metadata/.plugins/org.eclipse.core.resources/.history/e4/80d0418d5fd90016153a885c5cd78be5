@@ -1,0 +1,39 @@
+package com.business;
+
+import java.util.ArrayList;
+import java.util.Vector;
+
+import com.entity.PrincipalEntity;
+import com.mysql.jdbc.Connection;
+import com.mysql.jdbc.PreparedStatement;
+import com.mysql.jdbc.ResultSet;
+import com.sun.swing.internal.plaf.basic.resources.basic;
+import com.util.BaseDao;
+
+public class PrincipalBusiness {
+	public void showMessage(PrincipalEntity principalEntity){
+		System.out.println("Ω¯»ÎPrincipalBusiness");
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		try {
+			conn = (Connection) BaseDao.getConn();
+			String sql = "Select id,title,m_time,click from t_principal";
+			pstmt = (PreparedStatement) conn.prepareStatement(sql);
+			rs = (ResultSet) pstmt.executeQuery();
+			while (rs.next()) {
+				Vector v = new Vector();
+				v.add(rs.getString("id"));
+				v.add(rs.getString("title"));
+				v.add(rs.getString("m_time"));
+				v.add(rs.getString("click"));
+			}
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+			throw new RuntimeException(e);
+		}finally{
+			BaseDao.closeAll(conn, pstmt, rs);
+		}
+	}
+}

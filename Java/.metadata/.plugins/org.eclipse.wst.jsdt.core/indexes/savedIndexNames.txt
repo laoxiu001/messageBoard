@@ -1,0 +1,8 @@
+INDEX VERSION 1.3+E:\Java\x现技中心\l留言板\Java\.metadata\.plugins\org.eclipse.wst.jsdt.core\indexes
+2394230349.index
+3703420804.index
+1244517317.index
+1251150866.index
+877499828.index
+3247838655.index
+2569752348.index

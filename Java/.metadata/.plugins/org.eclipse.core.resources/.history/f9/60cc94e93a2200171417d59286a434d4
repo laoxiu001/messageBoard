@@ -1,0 +1,81 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>高考数据分析-首页</title>
+<meta name="viewport"
+	content="width=device-width,initial-scale=1,user-scalable=0">
+<!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
+<link rel="stylesheet"
+	href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css"
+	integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+	crossorigin="anonymous">
+<!-- 可选的 Bootstrap 主题文件（一般不用引入） -->
+<link rel="stylesheet"
+	href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"
+	integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp"
+	crossorigin="anonymous">
+<link rel="stylesheet" href="CSS/main.css">
+<script src="JS/data.js"></script>
+<script src="JS/jquery.min.js"></script>
+<script src="JS/selector.js"></script>
+<script type="text/javascript">
+        //自定义配置
+        var config = {
+            province: '#province',
+            city: '#city',
+            area: '#area'
+        };
+        //初始化
+        $(function () {
+            selector(config);
+        });
+    </script>
+</head>
+<body>
+	<div class="top">
+		<a>请输入您的高考信息</a>
+	</div>
+
+	<div id="info">
+		<div class="container-fluid">
+			<form>
+				<fieldset class="form-group">
+					<label>生源地</label> <select class="form-control" id="province">
+					</select>
+				</fieldset>
+
+				<fieldset class="form-group">
+					<label>文理科</label> <select class="form-control">
+						<option>文科</option>
+						<option>理科</option>
+					</select>
+				</fieldset>
+
+				<fieldset class="form-group">
+					<label>高考分数：</label> <input type="email" class="form-control">
+				</fieldset>
+
+				<fieldset class="form-group">
+					<label>查询专业：</label> <select class="form-control">
+						<option>--请选择--</option>
+						<option>信息与计算科学</option>
+						<option>统计学</option>
+					</select>
+				</fieldset>
+
+				<button type="submit" class="btn btn-success form-control">提交</button>
+			</form>
+		</div>
+	</div>
+
+	<a href="result.html">result</a>
+
+	<div class="bottom" style="margin-top: 200px">
+		<a>各省各批次录取最低分请查询招生信息网</a> <a href="http://zb.cqwu.net">http://zb.cqwu.net</a></br>
+		<a>咨询电话：023-49891968 49891969</a>
+	</div>
+</body>
+</html>

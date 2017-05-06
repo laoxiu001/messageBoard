@@ -1,0 +1,405 @@
+body{
+	background-color:#fafbfc;
+}
+*{
+	padding:0px;
+	margin:0px;
+	font-size:14px;
+}
+
+/* 公共类-id start */
+#middle {
+    margin:10px auto;
+    width:1250px;
+}
+#top{
+    width:100%;
+    height:100px;
+}
+/* 搜索 start */
+/* 搜索文本框清空按钮 start */
+#s_input{
+    border:0px;
+    background-color: transparent;
+    width:230px;
+    height:25px;
+    color: black;
+    ime-mode:Disabled;
+}
+.clear{
+    display: none;
+    position: absolute;
+    width: 16px;
+    height:16px;
+    margin: 6px 0 0 -25px;
+    background: url("../img/clear.png");
+}
+#choose{
+    float: left;
+    width:60px;
+}
+#choose select{
+    border:0px;
+    width:80px;
+    background-color: #ffffff;
+}
+#s_input::-ms-clear {
+    display: none;
+}
+#s_input:valid + .clear {
+    display: inline;
+}
+/* 搜索文本框清空按钮 end */
+.search{
+    padding-right: 10px;
+    padding-left: 20px;
+    width:300px;
+    border:3px solid #d09d06;
+    border-radius:20px;
+    float: right;
+    margin-top: 65px;
+}
+#btn_search{
+    float: right;
+    text-align: center;
+    height:25px;
+    font-size:16px;
+    width:30px;
+    background-color: #1774af;
+    border:none;
+    color: white;
+}
+/* 搜索 end */
+#nav{
+    width:1100px;
+    height:35px;
+    background-image:url(../img/nav.jpg);
+}
+#nav ul li a{
+    font-size: 20px;
+    font-weight:800;
+    float: left;
+    text-align: center;
+    width:220px;
+    height:35px;
+    line-height: 35px;
+    display: block;
+    
+    -webkit-transition: all .3s;
+    -moz-transition: all .3s;
+    -ms-transition: all .3s;
+    -o-transition: all .3s;
+    transition: all .3s;
+}
+#nav ul li a:hover{
+	background-color: rgba(255, 255, 255, 0.5); 
+}
+
+#picture img{
+    display: block;
+    width:100%;
+}
+#bottom{
+	box-shadow:-3px -3px 3px #EAEBEC;
+    text-align: center;
+    margin-top: 50px;
+    width:100%;
+    height:100px;
+}
+#bottom_text a{
+    color: black;
+    height:40px;
+    line-height: 40px;
+}
+#bottom_text .admin{
+    color: #1774af;
+}
+/* 公共类-id end */
+
+/* 公共类-class start */
+.bluebar{
+	text-align:left;
+    background-color: #cdf1c3;
+    width:100%;
+    height:40px;
+    float: left;
+}
+.bluebar a{
+    margin-left: 20px;
+    font-size:20px;
+    width:100%;
+    height:40px;
+    line-height: 40px;
+}
+#bar{
+	background-color: #e9ae9f;
+}
+tr td{
+    font-size: 17px;
+}
+tr:hover{
+	cursor:pointer;
+	background-color: #e9ae9f;
+}
+#Hot tr:hover{
+	cursor:pointer;
+	background-color: #cdf1c3;
+}
+#Principal tr:hover{
+	cursor:pointer;
+	background-color: #cdf1c3;
+}
+#message_bottom tr:hover{
+	cursor:default;
+	background-color: transparent;
+}
+#detail tr:hover{
+	cursor:default;
+}
+.single{
+    height:30px;
+    background-color: rgba(117, 117, 117, 0.12);
+}
+.double{
+    height:30px;
+    background-color: rgba(128, 128, 128, 0.02);
+}
+.more1{
+    float: right;
+    margin-right: 20px;
+}
+.message_bottom_left{
+    float: left;
+    text-align: center;
+    background-color: #e6c3ba;
+    width:10%;
+    height:100%;
+}
+.message_bottom_left a{
+    display: block;
+    color: black;
+    width:100%;
+    height: 35px;
+    line-height: 35px;
+}
+.message_bottom_left a:hover{
+    color: white;
+    background-color: #ea947d;
+}
+.greycontent_visiable{
+	box-shadow:10px 10px 10px #e0e0e0;
+    text-align: center;
+    float: right;
+    width:100%;
+    height: initial;
+    background-color: rgba(158, 164, 136, 0.12);
+}
+.button{
+	float-left:20px;
+	float:left;
+	display:block;
+	width:60px;
+	height:30px;
+	line-height:30px;
+    background-color: #c0dbb8;
+    text-align:center;
+    font-size: 18px;
+}
+.jump{
+	font-size: 18px;
+}
+/* 公共类-class end */
+
+/* 首页 start */
+#Latest{
+	box-shadow:8px 8px 10px #e0e0e0;
+	text-align: center;
+	margin-top: 10px;
+    display: block;
+    width:49%;
+    height:330px;
+}
+#Hot{
+	box-shadow:8px 8px 10px #e0e0e0;
+	text-align: center;
+	margin-top: 10px;
+    width:49%;
+    height:330px;
+}
+#Principal{
+	box-shadow:8px 8px 10px #e0e0e0;
+	text-align: center;
+    margin-top: 20px;
+	margin-bottom: 20px;
+    width:49%;
+    height:330px;
+}
+#Department{
+	box-shadow:8px 8px 10px #e0e0e0;
+	text-align: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    width:49%;
+    height:330px;
+}
+/* 首页 end */
+
+/* 最新留言板 */
+#message_Latest{
+    width: 1100px;
+    height:600px;
+}
+/* 最新留言板 */
+/* 热门留言板 */
+#message_Hot{
+    width: 1100px;
+    height:600px;
+}
+/* 热门留言板 */
+/* 校长留言板 */
+#message_Principal{
+    width: 1100px;
+    height:560px;
+}
+/* 校长留言板 */
+/* 校长留言板详情 */
+#detail{
+    width: 1100px;
+    padding-bottom: 10px;
+    height:350px;
+	min-height:350px;
+}
+/* 校长留言板详情 */
+/* 部门留言板 */
+#message_Department{
+    width: 1100px;
+    height:560px;
+}
+/* 部门留言板 */
+/* 学院留言板 */
+#message_College{
+    width: 1100px;
+    height:560px;
+}
+/* 学院留言板 */
+
+/* 发表留言 start */
+#message{
+    width:100%;
+}
+#message input{
+	outline:none;
+	resize:none;
+	background-color:transparent;
+	border:3px solid #ccc !important;
+	padding:2px 10px 2px 10px;
+}
+#message select{
+	outline:none;
+	resize:none;
+	background-color:transparent;
+	border:3px solid #ccc !important;
+	padding:2px 10px 5px 10px;
+}
+#message textarea{
+	outline:none;
+	resize:none;
+	background-color:transparent;
+	border:3px solid #ccc !important;
+	padding:2px 10px 2px 10px;
+}
+#message #submit{
+	outline:none;
+	resize:none;
+	box-shadow:2px 2px 2px #c0c0c0;
+    -webkit-transition: all .3s;
+    -moz-transition: all .3s;
+    -ms-transition: all .3s;
+    -o-transition: all .3s;
+    transition: all .3s;
+}
+#message #submit:hover{
+	background-color: rgba(144, 200, 250, 0.5); 
+}
+#message_bottom{
+    width:100%;
+    background-color: rgba(158, 164, 136, 0.12);
+}
+#message_bottom_left{
+    float: left;
+    text-align: center;
+    background-color: white;
+    width:10%;
+    height:100%;
+}
+#message_bottom_left a{
+    display: block;
+    color: black;
+    width:100%;
+    height: 35px;
+    line-height: 35px;
+}
+#message_bottom_left a:hover{
+    color: white;
+    background-color: gray;
+}
+#message_bottom_right{
+	box-shadow:10px 10px 10px #e0e0e0;
+	width:100%;
+    float: left;
+}
+#message_bottom_right table{
+    margin-top: 10px;
+    margin-left: 180px;
+}
+#message_bottom_right tr{
+    height:50px;
+}
+.code{
+	background:url(code_bg.jpg);
+    font-family:Arial;
+    font-style:italic;
+    color:blue;
+    font-size:20px;
+    border:0;
+    padding:2px 3px;
+    letter-spacing:3px;
+    font-weight:bolder;
+    float:left;
+    cursor:pointer;
+    width:80px;
+    height:20px;
+    text-align:center;
+    vertical-align:middle;
+}
+/* 发表留言 end */
+
+/* 编号查询结果 */
+#search_result{
+    width:100%;
+    height:300px;
+}
+/* 编号查询结果 */
+
+/* 留言结果 */
+.result{
+    padding-top: 80px;
+    width:100%;
+    height:180px;
+    background-color: #f2f2f2;
+}
+.result a{
+    font-size:20px;
+}
+.result_content{
+    margin:0 auto;
+    width:600px;
+    height:100px;
+}
+.result_content input{
+    font-size:20px;
+}
+.red{
+	color: red;
+}
+/* 留言结果 */

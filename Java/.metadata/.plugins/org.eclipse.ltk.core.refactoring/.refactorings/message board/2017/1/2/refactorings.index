@@ -1,0 +1,37 @@
+1484203687724	Delete element
+1484203897462	Delete element
+1484203905080	Rename resource 'index.html'
+1484204371590	Rename resource 'College_detail.html'
+1484204377046	Rename resource 'College.html'
+1484204382772	Rename resource 'Department_detail.html'
+1484204392244	Rename resource 'Department.html'
+1484204399341	Rename resource 'Hot.html'
+1484204408187	Rename resource 'Latest.html'
+1484204413333	Rename resource 'Message.html'
+1484204425243	Rename resource 'model.html'
+1484204428989	Rename resource 'Principal_detail.html'
+1484204433181	Rename resource 'Principal.html'
+1484204436452	Rename resource 'Test.html'
+1484204830700	Rename resource 'Message_success.html'
+1484204836437	Rename resource 'Message_wrong_length.html'
+1484204841635	Rename resource 'Message_wrong_String.html'
+1484204844549	Rename resource 'Search_content.html'
+1484207518286	Delete element
+1484207760560	Delete element
+1484207886190	Delete element
+1484210837668	Rename type 'Principal'
+1484210843605	Rename type 'Principal'
+1484211755602	Delete element
+1484304243132	Move compilation unit
+1484304254299	Rename type 'PrincipalBusiness'
+1484304645943	Delete element
+1484313194775	Delete element
+1484315595710	Rename type 'FillSelect'
+1484372602451	Copy compilation unit
+1484372604262	Copy compilation unit
+1484372624785	Rename type 'PrincipalEntity2'
+1484372635579	Rename type 'PrincipalEntity3'
+1484372663106	Copy compilation unit
+1484372675188	Rename type 'PrincipalService2'
+1484372686184	Copy compilation unit
+1484374113561	Infer generic type arguments
