@@ -8,17 +8,14 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class BaseDao {
-/*
- * 这是数据库连接dao类，用于连接数据库
- * */
-	static String driver = "com.mysql.jdbc.Driver";//驱动
-	static String url = "jdbc:mysql://localhost:3306/sc?characterEncoding=utf-8";//数据库信息
-	static String user = "sc";//数据库账号
-	static String password = "sc";//数据库密码
+	static String driver = "com.mysql.jdbc.Driver";
+	static String url = "jdbc:mysql://localhost:3306/sc?characterEncoding=utf-8";
+	static String user = "root";
+	static String password = "";
 
 	public static Connection getConn() throws ClassNotFoundException,SQLException {
 		/*
-		 * 获取数据库连接方法
+		 * 加载驱动、建立连接
 		 * */
 		Connection conn = null;
 		try {
@@ -32,7 +29,7 @@ public class BaseDao {
 
 	public static void closeAll(Connection conn, PreparedStatement pstmt,
 			/*
-			 * 关闭数据库连接方法
+			 * 关闭连接
 			 * */
 			ResultSet rs) {
 		if (rs != null) {

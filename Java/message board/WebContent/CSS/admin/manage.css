@@ -1,0 +1,159 @@
+/*头部start*/
+html {
+	height: 100%;
+}
+
+body {
+	background-color: #f0f3f6;
+}
+
+#top {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	background-color: #ffffff;
+	border-bottom: 0.5px solid #8a8989;
+}
+
+#top_left {
+	margin-left: 20px;
+}
+
+#top_user {
+	margin-top: 15px;
+	font-size: 15px;
+	text-decoration: none;
+	margin-right: 30px;
+	float: right;
+	color: black;
+}
+
+#top_right {
+	margin-right: 25px;
+	margin-top: 5px;
+	width: 40px;
+	float: right;
+}
+
+span:hover #flow {
+	display: block;
+}
+/*头部stop*/
+
+/*注销按钮start*/
+#flow {
+	display: none;
+	position: absolute;
+	top: 45px;
+	right: 0px;
+}
+
+#flow li a {
+	text-align: center;
+	text-decoration: none;
+	display: block;
+	width: 150px;
+	height: 50px;
+	line-height: 50px;
+	color: white;
+	background-color: #333333;
+}
+
+#flow li a img {
+	width: 20px;
+	margin-right: 5px;
+}
+
+#flow li a:hover {
+	color: yellow;
+	font-size: 15px;
+}
+/*注销按钮stop*/
+
+/*左边导航栏start*/
+#left {
+	position: fixed;
+	left: 0;
+	top: 48px;
+	bottom: 0px;
+}
+
+#left_visiable {
+	height: 100%;
+	width: 200px;
+	background-color: #22273d;
+}
+
+#left_visiable_avatar {
+	text-align: center;
+	width: 200px;
+}
+
+#left_visiable_avatar img {
+	margin: 20px auto;
+	width: 90px;
+}
+
+#left_visiable_userid {
+	text-align: center;
+	width: 200px;
+}
+
+#left_visiable_userid a {
+	line-height: 30px;
+	height: 30px;
+	color: white;
+	text-decoration: none;
+}
+
+#nav {
+	margin-top: 20px;
+	margin-left: -40px;
+}
+
+#nav ul li img {
+	width: 25px;
+	margin-right: 15px;
+}
+
+#nav ul li a {
+	text-align: center;
+	display: block;
+	width: 200px;
+	height: 60px;
+	line-height: 60px;
+	text-decoration: none;
+	color: white;
+}
+
+#nav ul li a:hover {
+	color: yellow;
+	font-size: 15px;
+}
+/*左边导航栏end*/
+
+/*顶部显示的当前路径start*/
+#location{
+	margin-top:80px;
+	margin-left:240px;
+}
+#location a:hover{
+	text-decoration:none;
+	color:black;
+}
+/*顶部显示的当前路径end*/
+
+/*右边留言内容start*/
+#right {
+	padding-top:20px;
+	margin-left: 220px;
+	margin-top: 30px;
+	width: 80%;
+	height: 1000px;
+	background-color: white;
+}
+td svg{
+	font-size:25px;
+}
+/*右边留言内容end*/

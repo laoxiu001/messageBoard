@@ -1,1 +1,50 @@
 ctrl+i 自动格式化jsp代码
+
+报错：
+1、Build Path配置JRE、Server Runtime
+2、删除web.xml中不存在的servlet纠错
+
+
+设置div高度为100%：
+html{
+	height:100%; 
+}
+
+#left{
+	position: fixed;
+    	left: 0;
+    	top: 48px;
+    	bottom: 0px;
+}
+#left_visiable{
+	height:100%;
+	width:200px;
+	background-color:#22273d;
+}
+
+
+
+鼠标经过用户头像显示资料卡（登陆、注册功能）：
+<span>
+	<img>
+	<div></div>
+</span>
+style:{
+	span:hover div{
+		display:block;
+	}
+}
+此处的ul 和 li 一定得是上下级关系
+
+
+
+过滤器Filter:
+1、设置全局静态变量存储用户登录状态
+2、创建过滤器
+3、配置web.xml
+
+注意：
+1.filterChain.doFilter(req,resp)才能继续执行后续操作;
+
+2、web.xml设置admin文件夹下所有文件过滤，需要加上*
+如：/admin/*

@@ -9,7 +9,6 @@ import com.mysql.jdbc.Connection;
 import com.mysql.jdbc.PreparedStatement;
 import com.mysql.jdbc.ResultSet;
 
-import user.dao.BaseDao;
 import user.util.TimeUtil;
 
 public class ListDao {
