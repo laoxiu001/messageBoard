@@ -1,4 +1,4 @@
-package user.servlet;
+package admin.servlet;
 
 import java.io.IOException;
 
@@ -7,6 +7,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import admin.dao.LoginDao;
 
@@ -39,20 +40,30 @@ public class LoginServlet extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");//设置编码
 		String user = new String(request.getParameter("user"));//获取用户名
 		String password = new String(request.getParameter("password"));//获取密码
-		
-		LoginDao ld = new LoginDao();
+		System.out.println("username:" + user);
+		System.out.println("password:" + password);
 		try{
-			
+			LoginDao ld = new LoginDao();
 			System.out.println(ld.login(user,password));
 			if(ld.login(user,password)){
 				System.out.println("登陆成功");
+				String isLogin = "OK";
+				//创建session对象
+				HttpSession session = request.getSession(true);
+				session.setAttribute("isLogin", isLogin);
+				session.setAttribute("msg","恭喜，登录成功");
+				
 				//修改代表登录状态的静态变量
-				LoginDao.isLogin = "OK";
-				System.out.println("isLogin状态改变：" + LoginDao.isLogin);
+				System.out.println("isLogin状态改变：" + isLogin);
 				request.getRequestDispatcher("/admin/reply.jsp").forward(request, response);//跳转留言成功页面
 			}else{
-				request.getRequestDispatcher("/admin/login.jsp").forward(request, response);//跳转留言成功页面
+				//创建session对象
+				HttpSession session = request.getSession(true);
+				session.setAttribute("msg","对不起，账号或者密码错误");
+				String isLogin = "WRONG";
+				session.setAttribute("isLogin", isLogin);
 				System.out.println("账号或密码错误");
+				request.getRequestDispatcher("/admin/login.jsp").forward(request, response);//跳转留言成功页面
 			}
 		}catch(Exception e){
 			e.printStackTrace();

@@ -13,7 +13,6 @@ public class LoginDao {
 	 * 这是管理员后台登陆功能的数据库操作类
 	 */
 	private boolean isSuccess = false;
-	public static String isLogin;
 	@SuppressWarnings("finally")
 	public boolean login(String user, String password) throws Exception {
 		Connection conn = null;

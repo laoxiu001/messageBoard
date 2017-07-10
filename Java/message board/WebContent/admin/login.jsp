@@ -1,3 +1,4 @@
+<%@page import="admin.dao.LoginDao"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -13,22 +14,16 @@
 %>
 <!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
 <link rel="stylesheet"
-	href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css"
-	integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
-	crossorigin="anonymous">
-<!-- Jquery -->
-<script
-	src="https://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
+	href="<%=basePath%>/CSS/bootstrap/bootstrap.min.css">
+<!-- jquery -->
+<script src="<%=basePath%>/CSS/bootstrap/jquery.min.js"></script>
 <!-- 可选的 Bootstrap 主题文件（一般不用引入） -->
 <link rel="stylesheet"
-	href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"
-	integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp"
-	crossorigin="anonymous">
+	href="<%=basePath%>/CSS/bootstrap/bootstrap-theme.min.css">
 <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
-<script
-	src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"
-	integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
-	crossorigin="anonymous"></script>
+<script src="<%=basePath%>/CSS/bootstrap/bootstrap.min.js"></script>
+<!--弹窗组件layer.JS引入 -->
+<script src="<%=basePath%>/JS/windows/layer.js"></script>
 <link rel="stylesheet" href="<%=basePath%>/CSS/main.css">
 <link rel="stylesheet" href="<%=basePath%>/CSS/admin/login.css">
 <link rel="stylesheet" href="<%=basePath%>/CSS/public.css">
@@ -93,5 +88,16 @@
 			</a> <a href="#" class="admin">管理登录</a>
 		</div>
 	</div>
+	<%
+		String msg = (String) session.getAttribute("msg");
+		if (msg != null && !msg.equals("")) {
+			//用户未登录
+	%>
+	<script type="text/javascript">
+		layer.msg('<%= msg%>');
+	</script>
+	<%
+		}
+	%>
 </body>
 </html>
