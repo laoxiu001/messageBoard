@@ -1,6 +1,7 @@
 <%@page import="admin.dao.LoginDao"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="s" uri="/struts-tags"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -59,9 +60,7 @@
 			</div>
 
 			<div id="login_form">
-				<form name="form"
-					action="${pageContext.request.contextPath }/LoginServlet"
-					method="post">
+				<form name="form" action="login" method="post">
 					<table>
 						<div id="input">
 							<input type="text" name="user" style="width: 100%; height: 100%;"
@@ -72,8 +71,7 @@
 								style="width: 100%; height: 100%;" placeholder="请输入密码">
 						</div>
 						<div id="input">
-							<input id="submit" class="submit" value="登陆" type="submit"
-								name="password">
+							<input id="submit" class="submit" value="登陆" type="submit">
 						</div>
 					</table>
 				</form>
@@ -94,7 +92,8 @@
 			//用户未登录
 	%>
 	<script type="text/javascript">
-		layer.msg('<%= login%>');
+		layer.msg('<%=login%>
+		');
 	</script>
 	<%
 		}

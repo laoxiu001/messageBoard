@@ -2,6 +2,7 @@
 <%@page import="user.dao.ListDao"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="s" uri="/struts-tags"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html lang="en">
 <head>
@@ -10,7 +11,8 @@
 <title>学生交流平台-首页</title>
 <%
 	String path = request.getContextPath();
-	String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort()
+	String basePath = request.getScheme() + "://"
+			+ request.getServerName() + ":" + request.getServerPort()
 			+ path + "/";
 %>
 <!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
@@ -166,290 +168,290 @@
 			</div>
 		</div>
 
-				<div class="container-fluid">
-					<div id="Latest" class="fl col-xs-6">
-						<div class="bluebar">
-							<a><img src="img/latest.png"> 最新留言</a>
-							<div class="more1">
-								<a class="clra" href="Latest.jsp">+更多</a>
-							</div>
-						</div>
-						<table width="100%">
-							<tr class="single">
-								<td width="50px">编号</td>
-								<td>标题</td>
-								<td width="120px">日期</td>
-							</tr>
-							<%
-								ListDao ls = new ListDao();
-								String sql = "Select * from t_message order by m_time desc";
-								ls.getList(sql);
-								Map map = null;
-								for (int i = 0; i <= 7; i++) {
-									map = (Map) ls.list.get(i);
-									if ((i % 2) == 0) {
-							%>
-							<tr class="double"
-								onclick="window.document.location = 'Details.jsp?index=<%out.print(map.get("id"));%>'">
-								<td>
-									<%
-										out.print(map.get("id"));
-									%>
-								</td>
-								<td>
-									<%
-										out.print(map.get("title"));
-									%>
-								</td>
-								<td>
-									<%
-										out.print(map.get("m_time"));
-									%>
-								</td>
-							</tr>
-							<%
-								} else {
-							%>
-							<tr class="single"
-								onclick="window.document.location = 'Details.jsp?index=<%out.print(map.get("id"));%>'">
-								<td>
-									<%
-										out.print(map.get("id"));
-									%>
-								</td>
-								<td>
-									<%
-										out.print(map.get("title"));
-									%>
-								</td>
-								<td>
-									<%
-										out.print(map.get("m_time"));
-									%>
-								</td>
-							</tr>
-							<%
-								}
-							%>
-							<%
-								}
-							%>
-						</table>
+		<div class="container-fluid">
+			<div id="Latest" class="fl col-xs-6">
+				<div class="bluebar">
+					<a><img src="img/latest.png"> 最新留言</a>
+					<div class="more1">
+						<a class="clra" href="Latest.jsp">+更多</a>
 					</div>
-
-					<div id="Hot" class="fr col-xs-6">
-						<div class="bluebar" id="bar">
-							<a><img src="img/hot.png"> 热门留言</a>
-							<div class="more1">
-								<a class="clra" href="Hot.jsp">+更多</a>
-							</div>
-						</div>
-						<table width="100%">
-							<tr class="single">
-								<td width="50px">编号</td>
-								<td>标题</td>
-								<td width="120px">日期</td>
-							</tr>
-							<%
-								ListDao ls1 = new ListDao();
-								String sql1 = "Select * from t_message order by click desc";
-								ls1.getList(sql1);
-								Map map1 = null;
-								for (int i = 0; i <= 7; i++) {
-									map1 = (Map) ls1.list.get(i);
-									if ((i % 2) == 0) {
-							%>
-							<tr class="double"
-								onclick="window.document.location = 'Details.jsp?index=<%out.print(map1.get("id"));%>'">
-								<td>
-									<%
-										out.print(map1.get("id"));
-									%>
-								</td>
-								<td>
-									<%
-										out.print(map1.get("title"));
-									%>
-								</td>
-								<td>
-									<%
-										out.print(map1.get("m_time"));
-									%>
-								</td>
-							</tr>
-							<%
-								} else {
-							%>
-							<tr class="single"
-								onclick="window.document.location = 'Details.jsp?index=<%out.print(map1.get("id"));%>'">
-								<td>
-									<%
-										out.print(map1.get("id"));
-									%>
-								</td>
-								<td>
-									<%
-										out.print(map1.get("title"));
-									%>
-								</td>
-								<td>
-									<%
-										out.print(map1.get("m_time"));
-									%>
-								</td>
-							</tr>
-							<%
-								}
-							%>
-							<%
-								}
-							%>
-						</table>
-						<div class="cb"></div>
-					</div>
-
-					<div id="Principal" class="fl col-xs-6">
-						<div class="bluebar" id="bar">
-							<a><img src="img/principal.png"> 校长留言</a>
-							<div class="more1">
-								<a class="clra" href="Principal.jsp?object=all">+更多</a>
-							</div>
-						</div>
-						<table width="100%">
-							<tr class="single">
-								<td width="50px">编号</td>
-								<td>标题</td>
-								<td width="120px">日期</td>
-							</tr>
-							<%
-								ListDao ls2 = new ListDao();
-								String sql2 = "Select * from t_message where m_object1 = '校长' order by m_time desc";
-								ls2.getList(sql2);
-								Map map2 = null;
-								for (int i = 0; i <= 7; i++) {
-									map2 = (Map) ls2.list.get(i);
-									if ((i % 2) == 0) {
-							%>
-							<tr class="double"
-								onclick="window.document.location = 'Details.jsp?index=<%out.print(map2.get("id"));%>'">
-								<td>
-									<%
-										out.print(map2.get("id"));
-									%>
-								</td>
-								<td>
-									<%
-										out.print(map2.get("title"));
-									%>
-								</td>
-								<td>
-									<%
-										out.print(map2.get("m_time"));
-									%>
-								</td>
-							</tr>
-							<%
-								} else {
-							%>
-							<tr class="single"
-								onclick="window.document.location = 'Details.jsp?index=<%out.print(map2.get("id"));%>'">
-								<td>
-									<%
-										out.print(map2.get("id"));
-									%>
-								</td>
-								<td>
-									<%
-										out.print(map2.get("title"));
-									%>
-								</td>
-								<td>
-									<%
-										out.print(map2.get("m_time"));
-									%>
-								</td>
-							</tr>
-							<%
-								}
-							%>
-							<%
-								}
-							%>
-						</table>
-					</div>
-
-					<div id="Department" class="fr col-xs-6">
-						<div class="bluebar">
-							<a><img src="img/department.png"> 部门留言</a>
-							<div class="more1">
-								<a class="clra" href="Department.jsp?object=all">+更多</a>
-							</div>
-						</div>
-						<table width="100%">
-							<tr class="single">
-								<td width="50px">编号</td>
-								<td>标题</td>
-								<td width="120px">日期</td>
-							</tr>
-							<%
-								ListDao ls3 = new ListDao();
-								String sql3 = "Select * from t_message where m_object1 = '部门' order by m_time desc";
-								ls3.getList(sql3);
-								Map map3 = null;
-								for (int i = 0; i <= 7; i++) {
-									map3 = (Map) ls3.list.get(i);
-									if ((i % 2) == 0) {
-							%>
-							<tr class="double"
-								onclick="window.document.location = 'Details.jsp?index=<%out.print(map3.get("id"));%>'">
-								<td>
-									<%
-										out.print(map3.get("id"));
-									%>
-								</td>
-								<td>
-									<%
-										out.print(map3.get("title"));
-									%>
-								</td>
-								<td>
-									<%
-										out.print(map3.get("m_time"));
-									%>
-								</td>
-							</tr>
-							<%
-								} else {
-							%>
-							<tr class="single"
-								onclick="window.document.location = 'Details.jsp?index=<%out.print(map3.get("id"));%>'">
-								<td>
-									<%
-										out.print(map3.get("id"));
-									%>
-								</td>
-								<td>
-									<%
-										out.print(map3.get("title"));
-									%>
-								</td>
-								<td>
-									<%
-										out.print(map3.get("m_time"));
-									%>
-								</td>
-							</tr>
-							<%
-								}
-							%>
-							<%
-								}
-							%>
-						</table>
-						<div class="cb"></div>
-					</div>
-					<div class="cb"></div>
 				</div>
+				<table width="100%">
+					<tr class="single">
+						<td width="50px">编号</td>
+						<td>标题</td>
+						<td width="120px">日期</td>
+					</tr>
+					<%
+						ListDao ls = new ListDao();
+						String sql = "Select * from t_message order by m_time desc";
+						ls.getList(sql);
+						Map map = null;
+						for (int i = 0; i <= 7; i++) {
+							map = (Map) ls.list.get(i);
+							if ((i % 2) == 0) {
+					%>
+					<tr class="double"
+						onclick="window.document.location = 'Details.jsp?index=<%out.print(map.get("id"));%>'">
+						<td>
+							<%
+								out.print(map.get("id"));
+							%>
+						</td>
+						<td>
+							<%
+								out.print(map.get("title"));
+							%>
+						</td>
+						<td>
+							<%
+								out.print(map.get("m_time"));
+							%>
+						</td>
+					</tr>
+					<%
+						} else {
+					%>
+					<tr class="single"
+						onclick="window.document.location = 'Details.jsp?index=<%out.print(map.get("id"));%>'">
+						<td>
+							<%
+								out.print(map.get("id"));
+							%>
+						</td>
+						<td>
+							<%
+								out.print(map.get("title"));
+							%>
+						</td>
+						<td>
+							<%
+								out.print(map.get("m_time"));
+							%>
+						</td>
+					</tr>
+					<%
+						}
+					%>
+					<%
+						}
+					%>
+				</table>
+			</div>
+
+			<div id="Hot" class="fr col-xs-6">
+				<div class="bluebar" id="bar">
+					<a><img src="img/hot.png"> 热门留言</a>
+					<div class="more1">
+						<a class="clra" href="Hot.jsp">+更多</a>
+					</div>
+				</div>
+				<table width="100%">
+					<tr class="single">
+						<td width="50px">编号</td>
+						<td>标题</td>
+						<td width="120px">日期</td>
+					</tr>
+					<%
+						ListDao ls1 = new ListDao();
+						String sql1 = "Select * from t_message order by click desc";
+						ls1.getList(sql1);
+						Map map1 = null;
+						for (int i = 0; i <= 7; i++) {
+							map1 = (Map) ls1.list.get(i);
+							if ((i % 2) == 0) {
+					%>
+					<tr class="double"
+						onclick="window.document.location = 'Details.jsp?index=<%out.print(map1.get("id"));%>'">
+						<td>
+							<%
+								out.print(map1.get("id"));
+							%>
+						</td>
+						<td>
+							<%
+								out.print(map1.get("title"));
+							%>
+						</td>
+						<td>
+							<%
+								out.print(map1.get("m_time"));
+							%>
+						</td>
+					</tr>
+					<%
+						} else {
+					%>
+					<tr class="single"
+						onclick="window.document.location = 'Details.jsp?index=<%out.print(map1.get("id"));%>'">
+						<td>
+							<%
+								out.print(map1.get("id"));
+							%>
+						</td>
+						<td>
+							<%
+								out.print(map1.get("title"));
+							%>
+						</td>
+						<td>
+							<%
+								out.print(map1.get("m_time"));
+							%>
+						</td>
+					</tr>
+					<%
+						}
+					%>
+					<%
+						}
+					%>
+				</table>
+				<div class="cb"></div>
+			</div>
+
+			<div id="Principal" class="fl col-xs-6">
+				<div class="bluebar" id="bar">
+					<a><img src="img/principal.png"> 校长留言</a>
+					<div class="more1">
+						<a class="clra" href="Principal.jsp?object=all">+更多</a>
+					</div>
+				</div>
+				<table width="100%">
+					<tr class="single">
+						<td width="50px">编号</td>
+						<td>标题</td>
+						<td width="120px">日期</td>
+					</tr>
+					<%
+						ListDao ls2 = new ListDao();
+						String sql2 = "Select * from t_message where m_object1 = '校长' order by m_time desc";
+						ls2.getList(sql2);
+						Map map2 = null;
+						for (int i = 0; i <= 7; i++) {
+							map2 = (Map) ls2.list.get(i);
+							if ((i % 2) == 0) {
+					%>
+					<tr class="double"
+						onclick="window.document.location = 'Details.jsp?index=<%out.print(map2.get("id"));%>'">
+						<td>
+							<%
+								out.print(map2.get("id"));
+							%>
+						</td>
+						<td>
+							<%
+								out.print(map2.get("title"));
+							%>
+						</td>
+						<td>
+							<%
+								out.print(map2.get("m_time"));
+							%>
+						</td>
+					</tr>
+					<%
+						} else {
+					%>
+					<tr class="single"
+						onclick="window.document.location = 'Details.jsp?index=<%out.print(map2.get("id"));%>'">
+						<td>
+							<%
+								out.print(map2.get("id"));
+							%>
+						</td>
+						<td>
+							<%
+								out.print(map2.get("title"));
+							%>
+						</td>
+						<td>
+							<%
+								out.print(map2.get("m_time"));
+							%>
+						</td>
+					</tr>
+					<%
+						}
+					%>
+					<%
+						}
+					%>
+				</table>
+			</div>
+
+			<div id="Department" class="fr col-xs-6">
+				<div class="bluebar">
+					<a><img src="img/department.png"> 部门留言</a>
+					<div class="more1">
+						<a class="clra" href="Department.jsp?object=all">+更多</a>
+					</div>
+				</div>
+				<table width="100%">
+					<tr class="single">
+						<td width="50px">编号</td>
+						<td>标题</td>
+						<td width="120px">日期</td>
+					</tr>
+					<%
+						ListDao ls3 = new ListDao();
+						String sql3 = "Select * from t_message where m_object1 = '部门' order by m_time desc";
+						ls3.getList(sql3);
+						Map map3 = null;
+						for (int i = 0; i <= 7; i++) {
+							map3 = (Map) ls3.list.get(i);
+							if ((i % 2) == 0) {
+					%>
+					<tr class="double"
+						onclick="window.document.location = 'Details.jsp?index=<%out.print(map3.get("id"));%>'">
+						<td>
+							<%
+								out.print(map3.get("id"));
+							%>
+						</td>
+						<td>
+							<%
+								out.print(map3.get("title"));
+							%>
+						</td>
+						<td>
+							<%
+								out.print(map3.get("m_time"));
+							%>
+						</td>
+					</tr>
+					<%
+						} else {
+					%>
+					<tr class="single"
+						onclick="window.document.location = 'Details.jsp?index=<%out.print(map3.get("id"));%>'">
+						<td>
+							<%
+								out.print(map3.get("id"));
+							%>
+						</td>
+						<td>
+							<%
+								out.print(map3.get("title"));
+							%>
+						</td>
+						<td>
+							<%
+								out.print(map3.get("m_time"));
+							%>
+						</td>
+					</tr>
+					<%
+						}
+					%>
+					<%
+						}
+					%>
+				</table>
+				<div class="cb"></div>
+			</div>
+			<div class="cb"></div>
+		</div>
 	</div>
 	<div id="bottom">
 		<div id="bottom_text">
