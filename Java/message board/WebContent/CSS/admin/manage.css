@@ -146,14 +146,22 @@ span:hover #flow {
 
 /*右边留言内容start*/
 #right {
-	padding-top:20px;
+	padding-top:40px;
+	padding-bottom:40px;
 	margin-left: 220px;
 	margin-top: 30px;
 	width: 80%;
-	height: 1000px;
 	background-color: white;
 }
 td svg{
 	font-size:25px;
+}
+#right_btn{
+	margin-top:30px;
+	margin-left:auto;
+	margin-right:auto;
+	padding-right:120px;
+	padding-left:120px;
+	
 }
 /*右边留言内容end*/

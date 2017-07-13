@@ -11,7 +11,7 @@
 /*li标签清除样式*/
 
 /*a标签清除样式*/
-.clra{
+.clra,.clra:hover{
 	text-decoration: none;
 	color: #000;
 }

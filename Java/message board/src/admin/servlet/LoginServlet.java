@@ -51,7 +51,6 @@ public class LoginServlet extends HttpServlet {
 				//创建session对象
 				HttpSession session = request.getSession(true);
 				session.setAttribute("isLogin", isLogin);
-				session.setAttribute("msg","恭喜，登录成功");
 				
 				//修改代表登录状态的静态变量
 				System.out.println("isLogin状态改变：" + isLogin);
@@ -59,7 +58,7 @@ public class LoginServlet extends HttpServlet {
 			}else{
 				//创建session对象
 				HttpSession session = request.getSession(true);
-				session.setAttribute("msg","对不起，账号或者密码错误");
+				session.setAttribute("login","对不起，账号或者密码错误");
 				String isLogin = "WRONG";
 				session.setAttribute("isLogin", isLogin);
 				System.out.println("账号或密码错误");

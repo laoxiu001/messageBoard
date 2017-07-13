@@ -1,13 +1,12 @@
-<%@page import="java.util.Map"%>
 <%@page import="user.dao.ListDao"%>
+<%@page import="java.util.Map"%>
 <%@ page language="java" contentType="text/html; charset=GB18030"
 	pageEncoding="GB18030"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=GB18030">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>学生交流平台-回复留言</title>
+<title>学生交流平台-留言查看</title>
 <%
 	String path = request.getContextPath();
 	String basePath = request.getScheme() + "://"
@@ -96,68 +95,116 @@
 				<form>
 					<table style="width: 90%; margin: 0px auto;"
 						class="table table-striped table-hover table-bordered">
-						<tr class="success">
-							<td>留言编号</td>
-							<td>标题</td>
-							<td>留言日期</td>
-							<td>留言类型</td>
-							<td>点击率</td>
-							<td style="width: 100px;">操作</td>
-						</tr>
-						<%
-							ListDao ls = new ListDao();
-							String sql = "Select * from t_message where m_object2 = '数学与财经学院' order by m_time";
-							ls.getList(sql);
-							Map map = null;
-							for (int i = 0; i < ls.list.size(); i++) {
-								map = (Map) ls.list.get(i);
-						%>
 						<tr>
-							<td>
-								<%
-									out.print(map.get("id"));
-								%>
-							</td>
-							<td>
-								<%
-									out.print(map.get("title"));
-								%>
-							</td>
-							<td>
-								<%
-									out.print(map.get("m_time"));
-								%>
-							</td>
-							<td>
-								<%
-									out.print(map.get("type"));
-								%>
-							</td>
-							<td>
-								<%
-									out.print(map.get("click"));
-								%>
-							</td>
-							<td><a style="cursor: pointer" href="<%= basePath%>/admin/message.jsp?id=<%= map.get("id")%>"
-								title="回复留言"><svg
-										class="icon" aria-hidden="true"> <use
-										xlink:href="#icon-huifu"></use> </svg></a> <a style="cursor: pointer"
-								onclick="forward('<%=map.get("m_object2")%>');" title="转交留言">
-									<svg class="icon" aria-hidden="true"> <use
-										xlink:href="#icon-shenpizhuanjiao"></use> </svg>
-							</a> <a style="cursor: pointer" onclick="del('<%=map.get("id")%>');"
-								title="删除留言"><svg class="icon" aria-hidden="true"> <use
-										xlink:href="#icon-icon209"></use> </svg> </a></td>
+							<td style="width: 90px">留言编号：</td>
+							<td><a class="clra"> <%
+ 	String index = request.getParameter("index");
+ 	if (index == null) {
+ 		index = "1";
+ 	}
+ 	int id = Integer.parseInt(index);
+ 	ListDao ls = new ListDao();
+ 	String sql = "Select * from t_message where id = " + id + " ";
+ 	ls.getList(sql);
+
+ 	Map map = null;
+ 	map = (Map) ls.list.get(0);
+ 	out.print(map.get("id"));
+ %>
+							</a></td>
 						</tr>
-						<%
-							}
-						%>
+						<tr>
+							<td>留言标题：</td>
+							<td><a class="clra"> <%
+ 	out.print(map.get("title"));
+ %>
+							</a></td>
+						</tr>
+						<tr>
+							<td>留言内容：</td>
+							<td><a class="clra"> <%
+ 	out.print(map.get("m_content"));
+ %>
+							</a></td>
+						</tr>
+						<tr>
+							<td>留言时间：</td>
+							<td><a class="clra"> <%
+ 	out.print(map.get("m_time_s"));
+ %>
+							</a></td>
+						</tr>
+						<tr>
+							<td>用户：</td>
+							<td><a class="clra"> <%
+ 	out.print(map.get("user"));
+ %>
+							</a></td>
+						</tr>
+						<tr>
+							<td>学号：</td>
+							<td><a class="clra"> <%
+ 	out.print(map.get("number"));
+ %>
+							</a></td>
+						</tr>
+						<tr>
+							<td>受理单位：</td>
+							<td><a class="clra"> <%
+ 	out.print(map.get("reply"));
+ %>
+							</a></td>
+						</tr>
+						<tr>
+							<td>回复内容：</td>
+							<td><a class="clra"> <%
+ 	out.print(map.get("r_content"));
+ %>
+							</a></td>
+						</tr>
+						<tr>
+							<td>回复时间：</td>
+							<td><a class="clra"> <%
+ 	out.print(map.get("r_time_s"));
+ %>
+							</a></td>
+						</tr>
+						<tr>
+							<td>点击率：</td>
+							<td><a class="clra"> <%
+ 	out.print(map.get("click"));
+ %>
+							</a></td>
+						</tr>
+						<tr>
+							<td>留言类型：</td>
+							<td><a class="clra"> <%
+ 	out.print(map.get("type"));
+ %>
+							</a></td>
+						</tr>
 					</table>
 				</form>
+				<div id="right_btn">
+					<button class="btn">3123</button>
+				</div>
 			</div>
 		</div>
 	</div>
 	<script>
+	/* 回复留言JS */
+ 		function reply(m_content) {
+	layer.prompt(
+			{
+			  formType: 2,
+			  value: '',
+			  title: '回复留言',
+			  area: ['500px', '200px'] //自定义文本域宽高
+			}, function(value, index, elem){
+			  alert(value); //得到value
+			  layer.close(index);
+			});
+		}
  	/* 转交留言JS */
  		function forward(m_object2) {
 		}

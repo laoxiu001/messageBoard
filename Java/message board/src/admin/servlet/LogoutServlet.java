@@ -34,7 +34,7 @@ public class LogoutServlet extends HttpServlet {
             return;  
         }
 		session.removeAttribute("isLogin");
-		session.setAttribute("msg","您已成功注销");
+		session.setAttribute("login","您已成功注销");
         response.sendRedirect("admin/login.jsp");
 	}
 

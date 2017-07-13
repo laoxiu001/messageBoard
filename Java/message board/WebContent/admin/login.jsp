@@ -68,7 +68,7 @@
 								placeholder="请输入用户名">
 						</div>
 						<div id="input">
-							<input type="text" name="password"
+							<input type="password" name="password"
 								style="width: 100%; height: 100%;" placeholder="请输入密码">
 						</div>
 						<div id="input">
@@ -89,15 +89,17 @@
 		</div>
 	</div>
 	<%
-		String msg = (String) session.getAttribute("msg");
-		if (msg != null && !msg.equals("")) {
+		String login = (String) session.getAttribute("login");
+		if (login != null && !login.equals("")) {
 			//用户未登录
 	%>
 	<script type="text/javascript">
-		layer.msg('<%= msg%>');
+		layer.msg('<%= login%>');
 	</script>
 	<%
 		}
+		//登录信息展示一次之后及时清除msg的session值
+		session.removeAttribute("login");
 	%>
 </body>
 </html>
