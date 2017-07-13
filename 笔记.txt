@@ -54,3 +54,5 @@ style:{
 1、jsp登录页面获取session字段msg，如果不为空就弹窗输出
 2、LoginServlet中登录失败设置session字段msg值为“对不起，账号或者密码错误”并使JS弹窗
 3、登录页面展示过一次登录状态信息（如：登录失败）及时把msg的seggion信息清除，防止重复提示登录信息
+
+test
