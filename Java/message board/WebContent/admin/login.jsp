@@ -1,7 +1,6 @@
 <%@page import="admin.dao.LoginDao"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib prefix="s" uri="/struts-tags"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -87,18 +86,17 @@
 		</div>
 	</div>
 	<%
-		String login = (String) session.getAttribute("login");
-		if (login != null && !login.equals("")) {
-			//用户未登录
+		String login_msg = (String) session.getAttribute("login_msg");
+		if (login_msg != null && !login_msg.equals("")) {
+			//如果后台有传入Session值，则输出
 	%>
 	<script type="text/javascript">
-		layer.msg('<%=login%>
-		');
+		layer.msg('<%=login_msg%>');
 	</script>
 	<%
 		}
 		//登录信息展示一次之后及时清除msg的session值
-		session.removeAttribute("login");
+		session.removeAttribute("login_msg");
 	%>
 </body>
 </html>

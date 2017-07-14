@@ -5,9 +5,26 @@
 <struts>
 <constant name="struts.devMode" value="true" />
    <package name="login" namespace="/admin" extends="struts-default">
+   
+   <!-- 定义一个拦截器 -->  
+        <interceptors>  
+            <interceptor name="admin"
+                class="admin.interceptor.AdminInterceptor">  
+            </interceptor>  
+            <!-- 拦截器栈 -->  
+            <interceptor-stack name="mydefault">  
+                <interceptor-ref name="defaultStack" />  
+                <interceptor-ref name="authority" />  
+            </interceptor-stack>  
+        </interceptors>  
+  
+    <!-- 定义了一个名为action的拦截器 -->  
       <action name="login" class="admin.struts.LoginAction">
-            <result name="success">/admin/index.jsp</result>
+            <result name="success">/admin/reply.jsp</result>
             <result name="wrong">/admin/login.jsp</result>
+      </action>
+      <action name="logout" class="admin.struts.LogoutAction">
+            <result name="success">/admin/login.jsp</result>
       </action>
    </package>
 </struts>

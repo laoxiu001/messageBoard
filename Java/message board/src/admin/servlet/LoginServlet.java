@@ -58,7 +58,7 @@ public class LoginServlet extends HttpServlet {
 			}else{
 				//创建session对象
 				HttpSession session = request.getSession(true);
-				session.setAttribute("login","对不起，账号或者密码错误");
+				session.setAttribute("login_msg","对不起，账号或者密码错误");
 				String isLogin = "WRONG";
 				session.setAttribute("isLogin", isLogin);
 				System.out.println("账号或密码错误");

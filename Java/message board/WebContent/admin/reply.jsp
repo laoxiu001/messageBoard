@@ -48,7 +48,7 @@
 				class="span2" id="top_right" alt="用户头像"
 				src="<%=basePath%>/img/admin/avatar.png">
 				<ul id="flow">
-					<li class="clrli"><a href="<%=basePath%>/logout.jsp"><img
+					<li class="clrli"><a href="logout"><img
 							src="<%=basePath%>/img/admin/logout.png">注销退出</a></li>
 					<li class="clrli"><a href=""><img
 							src="<%=basePath%>/img/admin/inf.png">个人资料</a></li>
@@ -175,8 +175,7 @@
 			//用户进行了数据的操作，反馈成功或者失败结果
 	%>
 	<script type="text/javascript">
-		layer.msg('<%=msg%>
-		');
+		layer.msg('<%=msg%>');
 	</script>
 	<%
 		}
