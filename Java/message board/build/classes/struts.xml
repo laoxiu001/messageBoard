@@ -1,19 +1,31 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE struts PUBLIC
-    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
-    "http://struts.apache.org/dtds/struts-2.0.dtd">
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+"http://struts.apache.org/dtds/struts-2.0.dtd">
 <struts>
-<constant name="struts.devMode" value="true" />
-   <package name="login" namespace="/admin" extends="struts-default">
-   <interceptors>
-      <interceptor name="login001" class="admin.interceptor.AdminInterceptor"></interceptor>
-</interceptors>
-      <action name="login" class="admin.struts.LoginAction">
+  
+ <constant name="struts.devMode" value="true"></constant>
+    <package name="login" namespace="/admin" extends="struts-default">
+        <interceptors>
+            <!-- 自定义的拦截器 -->
+            <interceptor name="interceptorLogin" class="admin.interceptor.AdminInterceptor"></interceptor>
+            <!-- 将自定义的拦截器打包到一个拦截器栈 -->
+            <interceptor-stack name="customStack">
+                <interceptor-ref name="defaultStack"></interceptor-ref>
+                <interceptor-ref name="interceptorLogin"></interceptor-ref>
+            </interceptor-stack>
+        </interceptors>
+        <!-- 将自定义的拦截器栈应用到全局 -->
+        <default-interceptor-ref name="customStack"></default-interceptor-ref>
+        <!-- 设置全局的action跳转页面 -->
+        <global-results>
+            <result name="login">/admin/login.jsp</result>
+        </global-results>
+        <action name="login" class="admin.struts.LoginAction">
             <result name="success">/admin/reply.jsp</result>
             <result name="wrong">/admin/login.jsp</result>
-      </action>
-      <action name="logout" class="admin.struts.LogoutAction">
+        </action>
+        <action name="logout" class="admin.struts.LogoutAction">
             <result name="success">/admin/login.jsp</result>
-      </action>
-   </package>
+        </action>
+    </package>
 </struts>

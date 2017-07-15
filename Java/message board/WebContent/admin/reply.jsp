@@ -57,7 +57,6 @@
 		</div>
 	</div>
 
-
 	<div class="container-fluid">
 		<div class="row">
 			<div id="left" class="span2">
