@@ -27,5 +27,8 @@
         <action name="logout" class="admin.struts.LogoutAction">
             <result name="success">/admin/login.jsp</result>
         </action>
+        <action name="reply" class="admin.struts.LogoutAction">
+            <result name="success">/admin/login.jsp</result>
+        </action>
     </package>
 </struts>
