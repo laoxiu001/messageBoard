@@ -63,11 +63,12 @@
 					<table>
 						<div id="input">
 							<input type="text" name="user" style="width: 100%; height: 100%;"
-								placeholder="请输入用户名">
+								placeholder="请输入用户名" id="username">
 						</div>
 						<div id="input">
 							<input type="password" name="password"
-								style="width: 100%; height: 100%;" placeholder="请输入密码">
+								style="width: 100%; height: 100%;" placeholder="请输入密码"
+								id="password">
 						</div>
 						<div id="input">
 							<input id="submit" class="submit" value="登陆" type="submit">
@@ -90,6 +91,30 @@
 		if (login_msg != null && !login_msg.equals("")) {
 			//如果后台有传入Session值，则输出
 	%>
+
+		<!-- 客户端本地校验用户名密码是否为空 -->
+		<script type="text/javascript">
+	function checkForm(form) {
+	  if(form.username.value == "") {
+		layer.msg('用户名不能为空!');
+	    form.username.focus();
+	    return false;
+	  }
+	  if(form.password.value == "") {
+		layer.msg('密码不能为空!');
+	    form.password.focus();
+	    return false;
+	  }
+	  return true;
+	}
+	window.onload = function () {
+	  var myform = document.forms[0];
+	  myform.onsubmit = function () {
+	    return checkForm(this);
+	  }
+	}
+	</script>
+
 	<script type="text/javascript">
 		layer.msg('<%=login_msg%>');
 	</script>

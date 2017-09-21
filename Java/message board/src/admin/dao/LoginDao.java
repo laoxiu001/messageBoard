@@ -1,12 +1,11 @@
 package admin.dao;
 
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.util.List;
 
-import user.dao.BaseDao;
-
-import com.mysql.jdbc.Connection;
+import org.hibernate.Query;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.cfg.Configuration;
 
 public class LoginDao {
 	/*
@@ -14,7 +13,10 @@ public class LoginDao {
 	 */
 	private boolean isSuccess = false;
 	@SuppressWarnings("finally")
-	public boolean login(String user, String password) throws Exception {
+	/*
+	 * 此处是旧版的JDBC代码
+	 * 
+	 * public boolean login(String user, String password) throws Exception {
 		Connection conn = null;
 		conn = (Connection) BaseDao.getConn();
 		
@@ -38,5 +40,37 @@ public class LoginDao {
 			BaseDao.closeAll(conn, pstmt, rs);
 			return isSuccess;
 		}
+	}*/
+	
+	/*
+	 * Hibernate验证登录功能
+	 * */
+	public boolean login(String user, String password){
+		// 获取Hibernate的配置对象
+				Configuration configuration = new Configuration().configure();
+				// 建立SessionFactory
+				SessionFactory sessionFactory = configuration.buildSessionFactory();
+				// 打开session
+				Session session = sessionFactory.openSession();
+				
+				//创建Test对象并赋值
+				User t = new User();
+				
+				//HQL语句
+				String hql = "FROM user WHERE user = ? AND password = ?";
+				//使用query接口  
+				Query queryObject=session.createQuery(hql);
+				
+				//设置参数
+				queryObject.setParameter(0, "1");  
+				queryObject.setParameter(1, "1");  
+				
+				
+				List list = queryObject.list();
+				if (list.size()>0) {
+					System.out.println("验证用户是否存在的list集合大小为：" + list.size());
+					isSuccess = true;
+				}
+				return isSuccess;
 	}
 }

@@ -1,7 +1,8 @@
-package admin.test;
+package admin.dao;
 
 import java.util.List;
 
+import org.hibernate.Query;
 import org.hibernate.SQLQuery;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -9,12 +10,13 @@ import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.service.ServiceRegistry;
 
-public class TestSX {
+public class UserSX {
 	public static void main(String[] args) {
 		bbb();
 	}
 
 	public static void bbb() {
+		boolean isSuccess = false;
 		// 获取Hibernate的配置对象
 		Configuration configuration = new Configuration().configure();
 		// 建立SessionFactory
@@ -23,16 +25,23 @@ public class TestSX {
 		Session session = sessionFactory.openSession();
 		
 		//创建Test对象并赋值
-		Test t = new Test();
-		t.setName("呵呵呵");
+		User t = new User();
 		
 		//HQL语句
-		String sql = "select * from Test";  
-        SQLQuery sqlQuery = session.createSQLQuery(sql).addEntity(Test.class);
-        
-        List<Test> list =sqlQuery.list();//java.util包  
-        for(Test te : list){  
-            System.out.println(te.getId());  
-        }  
+		String hql = "FROM User WHERE user = ? AND password = ?";
+		//使用query接口  
+		Query queryObject=session.createQuery(hql);
+		
+		//设置参数
+		queryObject.setParameter(1, "1");  
+		queryObject.setParameter(2, "1");  
+		
+		
+		List list = queryObject.list();
+		if (list.size()>0) {
+			System.out.println("验证用户是否存在的list集合大小为：" + list.size());
+			isSuccess = true;
+		}
+		System.out.println(isSuccess);
 	}
 }
