@@ -105,7 +105,7 @@
 						</tr>
 						<%
 							ListDao ls = new ListDao();
-							String sql = "Select * from t_message where m_object2 = '数学与财经学院' order by m_time";
+							String sql = "Select * from message where m_object2 = '数学与财经学院' order by m_time";
 							ls.getList(sql);
 							Map map = null;
 							for (int i = 0; i < ls.list.size(); i++) {

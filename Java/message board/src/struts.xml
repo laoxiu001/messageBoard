@@ -31,4 +31,15 @@
             <result name="success">/admin/login.jsp</result>
         </action>
     </package>
+    
+    
+    
+    
+    <package name="show" namespace="/admin" extends="struts-default">
+        <action name="getMessage" class="admin.struts.GetMessageAction">
+            <result name="success">/admin/index.jsp</result>
+        </action>
+    </package>
+    
+  	
 </struts>

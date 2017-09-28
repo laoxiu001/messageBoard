@@ -1,7 +1,5 @@
 package admin.struts;
 
-import javax.servlet.http.HttpSession;
-
 import org.apache.struts2.ServletActionContext;
 
 import admin.dao.LoginDao;
@@ -13,6 +11,7 @@ public class LoginAction extends ActionSupport{
 	private String password;
 	public String execute() {
 		try{
+			System.out.println("LoginAction中：");
 			System.out.println(user);
 			System.out.println(password);
 			LoginDao ld = new LoginDao();
@@ -38,6 +37,7 @@ public class LoginAction extends ActionSupport{
 			System.out.println("登陆失败");
 			return "wrong";
 		}
+		
 	}
 	public String getUser() {
 		return user;

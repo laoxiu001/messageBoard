@@ -62,3 +62,6 @@ Struts2：
 1、Action方法要继承ActionSupport方法
 2、ActionSupport方法的主方法默认为index
 3、要导入正确的jar包
+
+
+jsp传入数据为NULL：可能是Action中缺少get，set方法

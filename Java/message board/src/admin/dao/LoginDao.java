@@ -57,20 +57,24 @@ public class LoginDao {
 				User t = new User();
 				
 				//HQL语句
-				String hql = "FROM user WHERE user = ? AND password = ?";
+				String hql = "FROM User WHERE user = ? AND password = ?";
 				//使用query接口  
 				Query queryObject=session.createQuery(hql);
 				
 				//设置参数
-				queryObject.setParameter(0, "1");  
-				queryObject.setParameter(1, "1");  
+				queryObject.setParameter(0, user);  
+				queryObject.setParameter(1, password);  
 				
+				System.out.println("LoginDao中：");
+				System.out.println("用户名" + user);
+				System.out.println("密码" + password);
 				
 				List list = queryObject.list();
 				if (list.size()>0) {
 					System.out.println("验证用户是否存在的list集合大小为：" + list.size());
 					isSuccess = true;
 				}
+				System.out.println(isSuccess);
 				return isSuccess;
 	}
 }
