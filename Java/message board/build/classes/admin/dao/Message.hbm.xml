@@ -1,0 +1,23 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+          "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+          "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping> 
+  <class name="admin.dao.Message" table="Message"> 
+    <id name="id" type="int" column="id"> 
+      <generator class="native"/> 
+    </id>  
+    <property name="type" column="type" type="string"/>
+    <property name="title" column="title" type="string"/>
+    <property name="m_content" column="m_content" type="string"/>
+    <property name="m_time" column="m_time" type="string"/>
+    <property name="click" column="click" type="string"/>
+    <property name="user" column="user" type="string"/>
+    <property name="number" column="number" type="string"/>
+    <property name="reply" column="reply" type="string"/>
+    <property name="r_content" column="r_content" type="string"/>
+    <property name="r_time" column="r_time" type="string"/>
+    <property name="m_object1" column="m_object1" type="string"/>
+    <property name="m_object2" column="m_object2" type="string"/>
+  </class> 
+</hibernate-mapping>
