@@ -50,7 +50,7 @@
 				<ul id="flow">
 					<li class="clrli"><a href="logout"><img
 							src="<%=basePath%>/img/admin/logout.png">注销退出</a></li>
-					<li class="clrli"><a href=""><img
+					<li class="clrli"><a href="<%=basePath%>/admin/inf.jsp"><img
 							src="<%=basePath%>/img/admin/inf.png">个人资料</a></li>
 				</ul> </span> <a class="span4" id="top_user">欢迎回家，用户12138 </a>
 
@@ -77,7 +77,7 @@
 									alt="" src="<%=basePath%>/img/admin/reply.png"> 回复留言</a></li>
 							<li class="clrli"><a href="<%=basePath%>/admin/change.jsp"><img
 									alt="" src="<%=basePath%>/img/admin/change.png"> 修改密码</a></li>
-							<li class="clrli"><a href=""><img
+							<li class="clrli"><a href="<%=basePath%>/admin/inf.jsp"><img
 									alt="<%=basePath%>/admin/inf.jsp"
 									src="<%=basePath%>/img/admin/inf.png"> 个人资料</a></li>
 						</ul>
