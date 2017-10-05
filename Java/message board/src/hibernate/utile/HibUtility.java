@@ -11,6 +11,7 @@ import org.hibernate.service.ServiceRegistry;
 import org.hibernate.service.ServiceRegistryBuilder;
 
 import admin.dao.Message;
+import admin.dao.User;
 /**
  * hibernate工具类
  * @author 谭永超
@@ -21,6 +22,10 @@ public class HibUtility {
 	private Configuration cf = null;
 	private Session session =null;
 	private Transaction  Transaction =null;
+	private int consulting = 1;
+	private int suggest = 1;
+	private int complaints = 1;
+	
 	//获取Session 
 	/**
 	 * 创建工厂会话
@@ -84,6 +89,56 @@ public class HibUtility {
 	    System.out.println("count=" + count);
 		return count;
 	}
+	
+	//查询用户名
+		public int getSelect_User(String user){
+			//hql语句
+			String hql ="from User ";
+			Query query =(Query) session.createQuery(hql);
+			//实例list 存储结果集
+			int count = 0;
+			List<User> list = query.list();
+		    for (User l : list) {
+		    	if(l.getUser().toString().equals(user)){
+		    		count = 1;
+		    	}
+			}
+			return count;
+		}
+	
+	//判断已读条数和未读条数
+		public int number(){
+			String hql ="from Message";
+			Query query =(Query) session.createQuery(hql);
+			int i = 0 ;//已回复条数
+			int j = 0 ;//未回复条数
+			int a = 0;
+			int b = 0;
+			int c = 0;
+			List<Message> list = query.list();
+			//向需要的数据赋值
+			for (Message m : list) {
+				if(m.getStatus()== 1){
+					i++;
+				}else{
+					j++;
+				}
+				System.out.println("已回复内容i = " + i);
+				System.out.println("未回复内容j = " + j);
+				if(m.getType().toString().equals("咨询")){
+					a++;
+				}else if(m.getType().toString().equals("建议")){
+					b++;
+				}else if(m.getType().toString().equals("投诉")){
+					c++;
+				}
+				}
+			consulting = a;
+			suggest = b;
+			complaints = c;
+			return i;
+			}
+		
 	//delete操作
 	/**
 	 * 执行删除操作方法
@@ -101,6 +156,30 @@ public class HibUtility {
 		}
 		return fleat;
 	}
+	public int getConsulting() {
+		return consulting;
+	}
+
+	public void setConsulting(int consulting) {
+		this.consulting = consulting;
+	}
+
+	public int getSuggest() {
+		return suggest;
+	}
+
+	public void setSuggest(int suggest) {
+		this.suggest = suggest;
+	}
+
+	public int getComplaints() {
+		return complaints;
+	}
+
+	public void setComplaints(int complaints) {
+		this.complaints = complaints;
+	}
+
 	//update 操作
 	/**
 	 * 执行修改操作方法
@@ -132,6 +211,33 @@ public class HibUtility {
 		}
 		return fleat;
 	}
+	
+	//修改用户密码
+		public boolean getUpdate(String user, String password){
+
+			//第一种方法的修改
+			/*
+			//选取所要操作的列
+			student =(Student) session.get(Student.class,"8103");
+			//修改过后的值
+			student.setNAME("谭永超");
+			session.save(student);
+			 */
+			//第二种 ihql语句修改操作
+			String hql ="update User set password = :password  where user = :user";
+			Query qupdate =session.createQuery(hql); 
+			qupdate.setParameter("user", user);
+			qupdate.setParameter("password", password);
+			//执行
+			int i=qupdate.executeUpdate();
+			System.out.println(i);
+			if(i!=0){
+				fleat = true;
+			}
+			return fleat;
+		}
+		
+		
 	//insert操作
 	/**
 	 * 执行增加记录操作方法

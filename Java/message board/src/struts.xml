@@ -39,6 +39,12 @@
         <action name="reply_d"  class="admin.struts.LoginAction" method ="delete">
             <result name="success">/admin/reply.jsp</result>
         </action>
+        <action name="index"  class="admin.struts.LoginAction" method ="number">
+            <result name="index">/admin/index.jsp</result>
+        </action>
+        <action name="change"  class="admin.struts.LoginAction" method ="change">
+            <result name="change">/admin/change.jsp</result>
+        </action>
     </package>
   	
 </struts>

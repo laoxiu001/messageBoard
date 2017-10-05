@@ -53,7 +53,7 @@
 				<ul id="flow">
 					<li class="clrli"><a href="logout"><img
 							src="<%=basePath%>/img/admin/logout.png">注销退出</a></li>
-					<li class="clrli"><a href="<%=basePath%>/admin/inf.jsp"><img
+					<li class="clrli"><a href=""><img
 							src="<%=basePath%>/img/admin/inf.png">个人资料</a></li>
 				</ul> </span> <a class="span4" id="top_user">欢迎回家，用户12138 </a>
 
@@ -74,13 +74,13 @@
 
 					<div id="nav">
 						<ul>
-							<li class="clrli"><a href="<%=basePath%>/admin/index.jsp"><img
+							<li class="clrli"><a href="<%=basePath%>/admin/index"><img
 									alt="" src="<%=basePath%>/img/admin/index.png"> 首页概览</a></li>
 							<li class="clrli"><a href="<%=basePath%>/admin/reply_s"><img
 									alt="" src="<%=basePath%>/img/admin/reply.png"> 回复留言</a></li>
 							<li class="clrli"><a href="<%=basePath%>/admin/change.jsp"><img
 									alt="" src="<%=basePath%>/img/admin/change.png"> 修改密码</a></li>
-							<li class="clrli"><a href="<%=basePath%>/admin/inf.jsp"><img
+							<li class="clrli"><a href=""><img
 									alt="<%=basePath%>/admin/inf.jsp"
 									src="<%=basePath%>/img/admin/inf.png"> 个人资料</a></li>
 						</ul>
@@ -102,9 +102,12 @@
 				var myChart = echarts.init(document.getElementById('reply'));
 
 				// 指定图表的配置项和数据
+				var i=${sss.i};/* 已回复 */
+				var j=${sss.j};/* 未回复 */
+
 				var option1 = {
 					title : {
-						text : '未回复留言：165条',
+						text : '未回复留言：' + j + '条',
 						left : 'center',
 						top : 20,
 					},
@@ -141,10 +144,10 @@
 							}
 						},
 						data : [ {
-							value : 1548,
+							value : i,
 							name : '已回复留言'
 						}, {
-							value : 165,
+							value : j,
 							name : '未回复留言'
 						} ]
 					} ]
@@ -158,7 +161,9 @@
 			<script type="text/javascript">
 				// 基于准备好的dom，初始化echarts实例
 				var myChart = echarts.init(document.getElementById('type'));
-
+				var consulting = ${sss.consulting};//咨询
+				var suggest = ${sss.suggest};//建议
+				var complaints = ${sss.complaints};//投诉
 				// 指定图表的配置项和数据
 				var option2 = {
 					title : {
@@ -186,13 +191,13 @@
 						radius : '55%',
 						center : [ '50%', '50%' ],
 						data : [ {
-							value : 274,
+							value : consulting,
 							name : '咨询'
 						}, {
-							value : 235,
+							value : suggest,
 							name : '建议'
 						}, {
-							value : 400,
+							value : complaints,
 							name : '投诉'
 						} ].sort(function(a, b) {
 							return a.value - b.value;

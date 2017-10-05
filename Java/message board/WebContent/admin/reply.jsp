@@ -72,7 +72,7 @@
 
 					<div id="nav">
 						<ul>
-							<li class="clrli"><a href="<%=basePath%>/admin/index.jsp"><img
+							<li class="clrli"><a href="<%=basePath%>/admin/index"><img
 									alt="" src="<%=basePath%>/img/admin/index.png"> 首页概览</a></li>
 							<li class="clrli"><a href="<%=basePath%>/admin/reply_s"><img
 									alt="" src="<%=basePath%>/img/admin/reply.png"> 回复留言</a></li>

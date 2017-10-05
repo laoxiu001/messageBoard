@@ -1,18 +1,17 @@
 package admin.struts;
 
-import hibernate.utile.HibUtility;
-
 import java.util.List;
 import java.util.Map;
 
 import org.apache.struts2.ServletActionContext;
 import org.apache.struts2.interceptor.RequestAware;
 
-import admin.dao.LoginDao;
-import admin.dao.Message;
-
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
+
+import admin.dao.LoginDao;
+import admin.dao.Message;
+import hibernate.utile.HibUtility;
 
 public class LoginAction extends ActionSupport implements RequestAware{
 	/**
@@ -29,6 +28,68 @@ public class LoginAction extends ActionSupport implements RequestAware{
 	private String shouPage;
 	private String moPage;
 	private int id ;
+	
+	private int consulting;//咨询
+	private int suggest;//建议
+	private int complaints;//投诉
+	
+	int i;
+	int j;
+	
+	private String name;
+	private String password_1;
+	private String password_2;
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public String getPassword_1() {
+		return password_1;
+	}
+	public void setPassword_1(String password_1) {
+		this.password_1 = password_1;
+	}
+	public String getPassword_2() {
+		return password_2;
+	}
+	public void setPassword_2(String password_2) {
+		this.password_2 = password_2;
+	}
+	private String tishi;
+	
+	
+	public int getI() {
+		return i;
+	}
+	public void setI(int i) {
+		this.i = i;
+	}
+	public int getJ() {
+		return j;
+	}
+	public void setJ(int j) {
+		this.j = j;
+	}
+	public int getConsulting() {
+		return consulting;
+	}
+	public void setConsulting(int consulting) {
+		this.consulting = consulting;
+	}
+	public int getSuggest() {
+		return suggest;
+	}
+	public void setSuggest(int suggest) {
+		this.suggest = suggest;
+	}
+	public int getComplaints() {
+		return complaints;
+	}
+	public void setComplaints(int complaints) {
+		this.complaints = complaints;
+	}
 	public int getId() {
 		return id;
 	}
@@ -97,6 +158,44 @@ public class LoginAction extends ActionSupport implements RequestAware{
 	public void setPassword(String password) {
 		this.password = password;
 	}
+	
+	//修改用户名操作
+		public String change(){
+			HibUtility hib = new HibUtility();
+			hib.getSession();
+			if(hib.getSelect_User(name)==1){
+			if(getPassword_1()!="" ){
+			if(getPassword_1().equals(getPassword_2())){
+			try{
+			hib.getUpdate(name,password_1);
+			System.out.println("密码修改成功");
+			tishi = "密码修改成功"; 
+			}
+			catch (Exception e){
+				tishi = "请确定是用户名是否存在";
+			}
+			}
+			else {
+				tishi = "请输入相同密码";
+			}
+			}else {
+				tishi ="密码不能为空";
+			}
+			}else{
+				tishi = "没有该用户";
+			}
+			hib.allclose();
+			map.put("sss", this);
+			return "change";
+		}
+		
+		public String getTishi() {
+			return tishi;
+		}
+		public void setTishi(String tishi) {
+			this.tishi = tishi;
+		}
+		
 	//数据删除方法
 	public String delete(){
 		HibUtility hib = new HibUtility();
@@ -154,6 +253,20 @@ public class LoginAction extends ActionSupport implements RequestAware{
 		ActionContext.getContext().put("list", list);
 		return "success";
 	}
+	
+	public String number(){
+		HibUtility hib = new HibUtility();
+		hib.getSession();
+		i =hib.number();
+		j = hib.count() - i;
+		consulting = hib.getConsulting();
+		complaints = hib.getComplaints();
+		suggest = hib.getSuggest();
+		hib.allclose();
+		map.put("sss", this);
+		return "index";
+	}
+	
 	public String execute() {
 		try{
 			System.out.println("LoginAction中：");

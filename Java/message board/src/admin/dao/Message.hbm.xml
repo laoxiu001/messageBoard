@@ -19,5 +19,6 @@
     <property name="r_time" column="r_time" type="string"/>
     <property name="m_object1" column="m_object1" type="string"/>
     <property name="m_object2" column="m_object2" type="string"/>
+    <property name="status" column="status" type="int"/>
   </class> 
 </hibernate-mapping>

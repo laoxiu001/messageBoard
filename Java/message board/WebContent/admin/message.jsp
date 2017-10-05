@@ -71,7 +71,7 @@
 
 					<div id="nav">
 						<ul>
-							<li class="clrli"><a href="<%=basePath%>/admin/index.jsp"><img
+							<li class="clrli"><a href="<%=basePath%>/admin/index"><img
 									alt="" src="<%=basePath%>/img/admin/index.png">  ◊“≥∏≈¿¿</a></li>
 							<li class="clrli"><a href="<%=basePath%>/admin/reply_s"><img
 									alt="" src="<%=basePath%>/img/admin/reply.png"> ªÿ∏¥¡Ù—‘</a></li>

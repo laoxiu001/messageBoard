@@ -17,7 +17,14 @@ public class Message {
 	String r_time;//回复时间
 	String m_object1;//留言对象（校长、部门、学院）
 	String m_object2;//具体留言对象
+	int status;//回复状态
 	
+	public int getStatus() {
+		return status;
+	}
+	public void setStatus(int status) {
+		this.status = status;
+	}
 	public int getId() {
 		return id;
 	}
