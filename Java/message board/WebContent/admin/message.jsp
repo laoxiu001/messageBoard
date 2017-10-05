@@ -2,6 +2,7 @@
 <%@page import="java.util.Map"%>
 <%@ page language="java" contentType="text/html; charset=GB18030"
 	pageEncoding="GB18030"%>
+<%@taglib prefix="s" uri="/struts-tags"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -9,8 +10,7 @@
 <title>学生交流平台-留言查看</title>
 <%
 	String path = request.getContextPath();
-	String basePath = request.getScheme() + "://"
-			+ request.getServerName() + ":" + request.getServerPort()
+	String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort()
 			+ path + "/";
 %>
 <!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
@@ -73,7 +73,7 @@
 						<ul>
 							<li class="clrli"><a href="<%=basePath%>/admin/index.jsp"><img
 									alt="" src="<%=basePath%>/img/admin/index.png"> 首页概览</a></li>
-							<li class="clrli"><a href="<%=basePath%>/admin/reply.jsp"><img
+							<li class="clrli"><a href="<%=basePath%>/admin/reply_s"><img
 									alt="" src="<%=basePath%>/img/admin/reply.png"> 回复留言</a></li>
 							<li class="clrli"><a href="<%=basePath%>/admin/change.jsp"><img
 									alt="" src="<%=basePath%>/img/admin/change.png"> 修改密码</a></li>
@@ -92,97 +92,65 @@
 		</div>
 		<div class="row">
 			<div id="right" class="span10">
-				<form>
+				<form action="reply_inf" method="post">
 					<table style="width: 90%; margin: 0px auto;"
 						class="table table-striped table-hover table-bordered">
-						<tr>
-							<td style="width: 90px">留言编号：</td>
-							<td><a class="clra"> <%
- 	String index = request.getParameter("index");
- 	if (index == null) {
- 		index = "1";
- 	}
- 	int id = Integer.parseInt(index);
- 	ListDao ls = new ListDao();
- 	String sql = "Select * from t_message where id = " + id + " ";
- 	ls.getList(sql);
-
- 	Map map = null;
- 	map = (Map) ls.list.get(0);
- 	out.print(map.get("id"));
- %>
-							</a></td>
-						</tr>
-						<tr>
-							<td>留言标题：</td>
-							<td><a class="clra"> <%
- 	out.print(map.get("title"));
- %>
-							</a></td>
-						</tr>
-						<tr>
-							<td>留言内容：</td>
-							<td><a class="clra"> <%
- 	out.print(map.get("m_content"));
- %>
-							</a></td>
-						</tr>
-						<tr>
-							<td>留言时间：</td>
-							<td><a class="clra"> <%
- 	out.print(map.get("m_time_s"));
- %>
-							</a></td>
-						</tr>
-						<tr>
-							<td>用户：</td>
-							<td><a class="clra"> <%
- 	out.print(map.get("user"));
- %>
-							</a></td>
-						</tr>
-						<tr>
-							<td>学号：</td>
-							<td><a class="clra"> <%
- 	out.print(map.get("number"));
- %>
-							</a></td>
-						</tr>
-						<tr>
-							<td>受理单位：</td>
-							<td><a class="clra"> <%
- 	out.print(map.get("reply"));
- %>
-							</a></td>
-						</tr>
-						<tr>
-							<td>回复内容：</td>
-							<td><a class="clra"> <%
- 	out.print(map.get("r_content"));
- %>
-							</a></td>
-						</tr>
-						<tr>
-							<td>回复时间：</td>
-							<td><a class="clra"> <%
- 	out.print(map.get("r_time_s"));
- %>
-							</a></td>
-						</tr>
-						<tr>
-							<td>点击率：</td>
-							<td><a class="clra"> <%
- 	out.print(map.get("click"));
- %>
-							</a></td>
-						</tr>
-						<tr>
-							<td>留言类型：</td>
-							<td><a class="clra"> <%
- 	out.print(map.get("type"));
- %>
-							</a></td>
-						</tr>
+						<s:iterator var="li" value="list" status="number">
+							<tr>
+								<td style="width: 90px">留言编号：</td>
+								<td><a class="clra"><s:property value="id" /></a></td>
+							</tr>
+							<tr>
+								<td>留言标题：</td>
+								<td><a class="clra"> <s:property value="title" />
+								</a></td>
+							</tr>
+							<tr>
+								<td>留言内容：</td>
+								<td><a class="clra"> <s:property value="m_content" />
+								</a></td>
+							</tr>
+							<tr>
+								<td>留言时间：</td>
+								<td><a class="clra"> <s:property value="m_time" />
+								</a></td>
+							</tr>
+							<tr>
+								<td>用户：</td>
+								<td><a class="clra"> <s:property value="user" />
+								</a></td>
+							</tr>
+							<tr>
+								<td>学号：</td>
+								<td><a class="clra"> <s:property value="number" />
+								</a></td>
+							</tr>
+							<tr>
+								<td>受理单位：</td>
+								<td><a class="clra"> <s:property value="reply" />
+								</a></td>
+							</tr>
+							<tr>
+								<td>回复内容：</td>
+								<td><a class="clra"> <s:property value="r_content" />
+								</a></td>
+							</tr>
+							<tr>
+								<td>回复时间：</td>
+								<td><a class="clra"> <s:property value="r_time" />
+								</a></td>
+							</tr>
+							<tr>
+								<td>点击率：</td>
+								<td><a class="clra"> <s:property value="click" />
+								</a></td>
+							</tr>
+							<tr>
+								<td>留言类型：</td>
+								<td><a class="clra"> <s:property value="type" />
+								</a></td>
+							</tr>
+						</s:iterator>
 					</table>
 				</form>
 				<div id="right_btn">

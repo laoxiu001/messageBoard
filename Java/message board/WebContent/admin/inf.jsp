@@ -59,7 +59,7 @@
 						<ul>
 							<li class="clrli"><a href="<%=basePath%>/admin/index.jsp"><img
 									alt="" src="<%=basePath%>/img/admin/index.png"> 首页概览</a></li>
-							<li class="clrli"><a href="<%=basePath%>/admin/reply.jsp"><img
+							<li class="clrli"><a href="<%=basePath%>/admin/reply_s"><img
 									alt="" src="<%=basePath%>/img/admin/reply.png"> 回复留言</a></li>
 							<li class="clrli"><a href="<%=basePath%>/admin/change.jsp"><img
 									alt="" src="<%=basePath%>/img/admin/change.png"> 修改密码</a></li>
@@ -74,7 +74,7 @@
 		</div>
 
 		<div id="location">
-			<a class="clra">修改密码 >> </a>
+			<a class="clra">个人资料 >> </a>
 		</div>
 		<div class="row">
 			<div id="right" class="span10"

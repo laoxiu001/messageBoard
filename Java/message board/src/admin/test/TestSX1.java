@@ -1,13 +1,6 @@
 package admin.test;
 
-import java.util.List;
-
-import org.hibernate.SQLQuery;
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import org.hibernate.Transaction;
-import org.hibernate.cfg.Configuration;
-import org.hibernate.service.ServiceRegistry;
+import hibernate.utile.HibUtility;
 
 public class TestSX1 {
 	public static void main(String[] args) {
@@ -15,7 +8,7 @@ public class TestSX1 {
 	}
 
 	public static void bbb() {
-		// 获取Hibernate的配置对象
+/*		// 获取Hibernate的配置对象
 		Configuration configuration = new Configuration().configure();
 		// 建立SessionFactory
 		SessionFactory sessionFactory = configuration.buildSessionFactory();
@@ -33,6 +26,10 @@ public class TestSX1 {
         List<Test> list =sqlQuery.list();//java.util包  
         for(Test te : list){  
             System.out.println(te.getId());  
-        }  
+        } */ 
+		
+		HibUtility hb = new HibUtility();
+		hb.getSession();
+		hb.getMessage(1);
 	}
 }

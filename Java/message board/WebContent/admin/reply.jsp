@@ -1,32 +1,34 @@
+<%@page import="admin.struts.LoginAction"%>
 <%@page import="java.util.Map"%>
 <%@page import="user.dao.ListDao"%>
-<%@ page language="java" contentType="text/html; charset=GB18030"
-	pageEncoding="GB18030"%>
+<%@taglib prefix="s" uri="/struts-tags"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=GB18030">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Ñ§Éú½»Á÷Æ½Ì¨-»Ø¸´ÁôÑÔ</title>
+<title>å­¦ç”Ÿäº¤æµå¹³å°-å›å¤ç•™è¨€</title>
 <%
 	String path = request.getContextPath();
 	String basePath = request.getScheme() + "://"
 			+ request.getServerName() + ":" + request.getServerPort()
 			+ path + "/";
 %>
-<!-- ×îĞÂ°æ±¾µÄ Bootstrap ºËĞÄ CSS ÎÄ¼ş -->
+<!-- æœ€æ–°ç‰ˆæœ¬çš„ Bootstrap æ ¸å¿ƒ CSS æ–‡ä»¶ -->
 <link rel="stylesheet"
 	href="<%=basePath%>/CSS/bootstrap/bootstrap.min.css">
 <!-- jquery -->
 <script src="<%=basePath%>/CSS/bootstrap/jquery.min.js"></script>
-<!-- ¿ÉÑ¡µÄ Bootstrap Ö÷ÌâÎÄ¼ş£¨Ò»°ã²»ÓÃÒıÈë£© -->
+<!-- å¯é€‰çš„ Bootstrap ä¸»é¢˜æ–‡ä»¶ï¼ˆä¸€èˆ¬ä¸ç”¨å¼•å…¥ï¼‰ -->
 <link rel="stylesheet"
 	href="<%=basePath%>/CSS/bootstrap/bootstrap-theme.min.css">
-<!-- ×îĞÂµÄ Bootstrap ºËĞÄ JavaScript ÎÄ¼ş -->
+<!-- æœ€æ–°çš„ Bootstrap æ ¸å¿ƒ JavaScript æ–‡ä»¶ -->
+<%@ page language="java" contentType="text/html; charset=utf-8"
+	pageEncoding="utf-8"%>
 <script src="<%=basePath%>/CSS/bootstrap/bootstrap.min.js"></script>
-<!-- °¢ÀïÔÆiconfont×ÖÌåJSÒıÈë -->
+<!-- é˜¿é‡Œäº‘iconfontå­—ä½“JSå¼•å…¥ -->
 <script src="<%=basePath%>/JS/iconfont/iconfont.js"></script>
-<!--µ¯´°×é¼şlayer.JSÒıÈë -->
+<!--å¼¹çª—ç»„ä»¶layer.JSå¼•å…¥ -->
 <script src="<%=basePath%>/JS/windows/layer.js"></script>
 <style type="text/css">
 .icon {
@@ -43,43 +45,42 @@
 <body style="background-color: #eaecec;">
 	<div id="top" class="container-fluid">
 		<div class="row">
-			<img class="span2" id="top_left" id="top_left" alt="ÖØÇìÎÄÀíÑ§Ôº"
+			<img class="span2" id="top_left" id="top_left" alt="é‡åº†æ–‡ç†å­¦é™¢"
 				src="<%=basePath%>/img/admin/logo2.png"> <span><img
-				class="span2" id="top_right" alt="ÓÃ»§Í·Ïñ"
+				class="span2" id="top_right" alt="ç”¨æˆ·å¤´åƒ"
 				src="<%=basePath%>/img/admin/avatar.png">
 				<ul id="flow">
 					<li class="clrli"><a href="logout"><img
-							src="<%=basePath%>/img/admin/logout.png">×¢ÏúÍË³ö</a></li>
-					<li class="clrli"><a href="<%=basePath%>/admin/inf.jsp"><img
-							src="<%=basePath%>/img/admin/inf.png">¸öÈË×ÊÁÏ</a></li>
-				</ul> </span> <a class="span4" id="top_user">»¶Ó­»Ø¼Ò£¬ÓÃ»§12138 </a>
+							src="<%=basePath%>/img/admin/logout.png">æ³¨é”€é€€å‡º</a></li>
+					<li class="clrli"><a href=""><img
+							src="<%=basePath%>/img/admin/inf.png">ä¸ªäººèµ„æ–™</a></li>
+				</ul> </span> <a class="span4" id="top_user">æ¬¢è¿å›å®¶ï¼Œç”¨æˆ·12138 </a>
 
 		</div>
 	</div>
-
 	<div class="container-fluid">
 		<div class="row">
 			<div id="left" class="span2">
 				<div id="left_visiable">
 					<div id="left_visiable_avatar">
-						<img alt="ÓÃ»§Í·Ïñ" src="<%=basePath%>/img/admin/avatar_white.png">
+						<img alt="ç”¨æˆ·å¤´åƒ" src="<%=basePath%>/img/admin/avatar_white.png">
 					</div>
 
 					<div id="left_visiable_userid">
-						<a>±àºÅ£º1056314532</a>
+						<a>ç¼–å·ï¼š1056314532</a>
 					</div>
 
 					<div id="nav">
 						<ul>
 							<li class="clrli"><a href="<%=basePath%>/admin/index.jsp"><img
-									alt="" src="<%=basePath%>/img/admin/index.png"> Ê×Ò³¸ÅÀÀ</a></li>
-							<li class="clrli"><a href="<%=basePath%>/admin/reply.jsp"><img
-									alt="" src="<%=basePath%>/img/admin/reply.png"> »Ø¸´ÁôÑÔ</a></li>
+									alt="" src="<%=basePath%>/img/admin/index.png"> é¦–é¡µæ¦‚è§ˆ</a></li>
+							<li class="clrli"><a href="<%=basePath%>/admin/reply_s"><img
+									alt="" src="<%=basePath%>/img/admin/reply.png"> å›å¤ç•™è¨€</a></li>
 							<li class="clrli"><a href="<%=basePath%>/admin/change.jsp"><img
-									alt="" src="<%=basePath%>/img/admin/change.png"> ĞŞ¸ÄÃÜÂë</a></li>
+									alt="" src="<%=basePath%>/img/admin/change.png"> ä¿®æ”¹å¯†ç </a></li>
 							<li class="clrli"><a href="<%=basePath%>/admin/inf.jsp"><img
 									alt="<%=basePath%>/admin/inf.jsp"
-									src="<%=basePath%>/img/admin/inf.png"> ¸öÈË×ÊÁÏ</a></li>
+									src="<%=basePath%>/img/admin/inf.png"> ä¸ªäººèµ„æ–™</a></li>
 						</ul>
 					</div>
 
@@ -88,97 +89,81 @@
 		</div>
 
 		<div id="location">
-			<a class="clra">»Ø¸´ÁôÑÔ >> Î´»Ø¸´ÁôÑÔ</a>
+			<a class="clra">å›å¤ç•™è¨€ >> æœªå›å¤ç•™è¨€</a> <a>${ts_1} ${ts_2} </a>
 		</div>
 		<div class="row">
 			<div id="right" class="span10">
-				<form>
+				<form name="form" action="reply_s" method="post">
 					<table style="width: 90%; margin: 0px auto;"
 						class="table table-striped table-hover table-bordered">
 						<tr class="success">
-							<td>ÁôÑÔ±àºÅ</td>
-							<td>±êÌâ</td>
-							<td>ÁôÑÔÈÕÆÚ</td>
-							<td>ÁôÑÔÀàĞÍ</td>
-							<td>µã»÷ÂÊ</td>
-							<td style="width: 100px;">²Ù×÷</td>
+							<td>ç•™è¨€ç¼–å·</td>
+							<td>æ ‡é¢˜</td>
+							<td>ç•™è¨€æ—¥æœŸ</td>
+							<td>ç•™è¨€ç±»å‹</td>
+							<td>ç‚¹å‡»ç‡</td>
+							<td style="width: 100px;">æ“ä½œ</td>
 						</tr>
-						<%
-							ListDao ls = new ListDao();
-							String sql = "Select * from message where m_object2 = 'ÊıÑ§Óë²Æ¾­Ñ§Ôº' order by m_time";
-							ls.getList(sql);
-							Map map = null;
-							for (int i = 0; i < ls.list.size(); i++) {
-								map = (Map) ls.list.get(i);
-						%>
+						<s:iterator var="li" value="list" status="number">
+							<tr>
+								<td><s:property value="id" /></td>
+								<td><s:property value="title" /></td>
+								<td><s:property value="m_time" /></td>
+								<td><s:property value="type" /></td>
+								<td><s:property value="click" /></td>
+								<td><a style="cursor: pointer"
+									href="<%= basePath%>/admin/reply_inf?id=<s:property value="id"/>"
+									title="å›å¤ç•™è¨€"><svg class="icon" aria-hidden="true"> <use
+											xlink:href="#icon-huifu"></use> </svg></a> <a style="cursor: pointer"
+									onclick="forward('<s:property value="m_time"/><s:property value="m_object2"/>;"
+									title="è½¬äº¤ç•™è¨€"> <svg class="icon" aria-hidden="true"> <use
+											xlink:href="#icon-shenpizhuanjiao"></use> </svg>
+								</a> <a style="cursor: pointer"
+									onclick="del('<s:property value="id"/>');" title="åˆ é™¤ç•™è¨€"><svg
+											class="icon" aria-hidden="true"> <use
+											xlink:href="#icon-icon209"></use> </svg> </a></td>
+							</tr>
+						</s:iterator>
 						<tr>
-							<td>
-								<%
-									out.print(map.get("id"));
-								%>
-							</td>
-							<td>
-								<%
-									out.print(map.get("title"));
-								%>
-							</td>
-							<td>
-								<%
-									out.print(map.get("m_time"));
-								%>
-							</td>
-							<td>
-								<%
-									out.print(map.get("type"));
-								%>
-							</td>
-							<td>
-								<%
-									out.print(map.get("click"));
-								%>
-							</td>
-							<td><a style="cursor: pointer" href="<%= basePath%>/admin/message.jsp?id=<%= map.get("id")%>"
-								title="»Ø¸´ÁôÑÔ"><svg
-										class="icon" aria-hidden="true"> <use
-										xlink:href="#icon-huifu"></use> </svg></a> <a style="cursor: pointer"
-								onclick="forward('<%=map.get("m_object2")%>');" title="×ª½»ÁôÑÔ">
-									<svg class="icon" aria-hidden="true"> <use
-										xlink:href="#icon-shenpizhuanjiao"></use> </svg>
-							</a> <a style="cursor: pointer" onclick="del('<%=map.get("id")%>');"
-								title="É¾³ıÁôÑÔ"><svg class="icon" aria-hidden="true"> <use
-										xlink:href="#icon-icon209"></use> </svg> </a></td>
+							<td colspan="6" style="margin: auto; text-align: center;"><input
+								type="submit" value="é¦–é¡µ" name="shouPage" class="btn btn-primary" />
+								<input type="submit" value="ä¸Šä¸€é¡µ" name="previousPage"
+								class="btn btn-primary" /> <input type="text" value="${sss.p}"
+								name="page" style="width: 20px; text-align: center;" /> <input
+								type="submit" value="ä¸‹ä¸€é¡µ" name="theNextPage"
+								class="btn btn-primary" /> <input type="submit" value="æœ«é¡µ"
+								name="moPage" class="btn btn-primary" /></td>
 						</tr>
-						<%
-							}
-						%>
 					</table>
+
 				</form>
+
 			</div>
 		</div>
 	</div>
 	<script>
- 	/* ×ª½»ÁôÑÔJS */
+ 	/* è½¬äº¤ç•™è¨€JS */
  		function forward(m_object2) {
 		}
- 	/* É¾³ıÁôÑÔJS */
+ 	/* åˆ é™¤ç•™è¨€JS */
  		function del(id) {
-			layer.confirm('È·¶¨É¾³ıÕâÌõ¼ÇÂ¼Âğ£¿', {icon: 8, title:'¾¯¸æ'}, function(){
+			layer.confirm('ç¡®å®šåˆ é™¤è¿™æ¡è®°å½•å—ï¼Ÿ', {icon: 8, title:'è­¦å‘Š'}, function(){
 				  //do something
-				  location.href = "<%=basePath%>/delete.jsp?id=" + id;  
+				  location.href = "<%=basePath%>/admin/reply_d?id=" + id;  
 				});
 		}
 	</script>
 	<%
 		String msg = (String) session.getAttribute("msg");
 		if (msg != null && !msg.equals("")) {
-			//ÓÃ»§½øĞĞÁËÊı¾İµÄ²Ù×÷£¬·´À¡³É¹¦»òÕßÊ§°Ü½á¹û
+			//ç”¨æˆ·è¿›è¡Œäº†æ•°æ®çš„æ“ä½œï¼Œåé¦ˆæˆåŠŸæˆ–è€…å¤±è´¥ç»“æœ
 	%>
 	<script type="text/javascript">
 		layer.msg('<%=msg%>');
 	</script>
 	<%
 		}
-		//µÇÂ¼ĞÅÏ¢Õ¹Ê¾Ò»´ÎÖ®ºó¼°Ê±Çå³ımsgµÄsessionÖµ
+		//ç™»å½•ä¿¡æ¯å±•ç¤ºä¸€æ¬¡ä¹‹ååŠæ—¶æ¸…é™¤msgçš„sessionå€¼
 		session.removeAttribute("msg");
 	%>
 </body>
