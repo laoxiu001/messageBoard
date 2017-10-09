@@ -65,3 +65,14 @@ Struts2：
 
 
 jsp传入数据为NULL：可能是Action中缺少get，set方法
+
+
+
+
+中文乱码问题：
+Struts2：
+
+
+Hibernate：
+
+<property name="hibernate.connection.url">jdbc:mysql://localhost:3306/sc?characterEncoding=UTF-8</property>

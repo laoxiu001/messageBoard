@@ -10,8 +10,7 @@
 <title>学生交流平台-回复留言</title>
 <%
 	String path = request.getContextPath();
-	String basePath = request.getScheme() + "://"
-			+ request.getServerName() + ":" + request.getServerPort()
+	String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort()
 			+ path + "/";
 %>
 <!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
@@ -112,13 +111,9 @@
 								<td><s:property value="type" /></td>
 								<td><s:property value="click" /></td>
 								<td><a style="cursor: pointer"
-									href="<%= basePath%>/admin/reply_inf?id=<s:property value="id"/>"
-									title="回复留言"><svg class="icon" aria-hidden="true"> <use
-											xlink:href="#icon-huifu"></use> </svg></a> <a style="cursor: pointer"
-									onclick="forward('<s:property value="m_time"/><s:property value="m_object2"/>;"
-									title="转交留言"> <svg class="icon" aria-hidden="true"> <use
-											xlink:href="#icon-shenpizhuanjiao"></use> </svg>
-								</a> <a style="cursor: pointer"
+									href="<%=basePath%>/admin/reply_inf?id=<s:property value="id"/>"
+									title="查看留言"><svg class="icon" aria-hidden="true"> <use
+											xlink:href="#icon-huifu"></use> </svg></a>&nbsp&nbsp&nbsp&nbsp<a style="cursor: pointer"
 									onclick="del('<s:property value="id"/>');" title="删除留言"><svg
 											class="icon" aria-hidden="true"> <use
 											xlink:href="#icon-icon209"></use> </svg> </a></td>
@@ -159,7 +154,8 @@
 			//用户进行了数据的操作，反馈成功或者失败结果
 	%>
 	<script type="text/javascript">
-		layer.msg('<%=msg%>');
+		layer.msg('<%=msg%>
+		');
 	</script>
 	<%
 		}

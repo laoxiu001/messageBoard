@@ -28,14 +28,14 @@ public class LoginAction extends ActionSupport implements RequestAware{
 	private String shouPage;
 	private String moPage;
 	private int id ;
-	
+
 	private int consulting;//咨询
 	private int suggest;//建议
 	private int complaints;//投诉
-	
+
 	int i;
 	int j;
-	
+
 	private String name;
 	private String password_1;
 	private String password_2;
@@ -58,8 +58,8 @@ public class LoginAction extends ActionSupport implements RequestAware{
 		this.password_2 = password_2;
 	}
 	private String tishi;
-	
-	
+
+
 	public int getI() {
 		return i;
 	}
@@ -158,44 +158,48 @@ public class LoginAction extends ActionSupport implements RequestAware{
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	
+
 	//修改用户名操作
-		public String change(){
-			HibUtility hib = new HibUtility();
-			hib.getSession();
+	public String change(){
+		HibUtility hib = new HibUtility();
+		hib.getSession();
+		if(!name.equals("")&&name!=null){
 			if(hib.getSelect_User(name)==1){
-			if(getPassword_1()!="" ){
-			if(getPassword_1().equals(getPassword_2())){
-			try{
-			hib.getUpdate(name,password_1);
-			System.out.println("密码修改成功");
-			tishi = "密码修改成功"; 
-			}
-			catch (Exception e){
-				tishi = "请确定是用户名是否存在";
-			}
-			}
-			else {
-				tishi = "请输入相同密码";
-			}
-			}else {
-				tishi ="密码不能为空";
-			}
+				if(getPassword_1()!="" ){
+					if(getPassword_1().equals(getPassword_2())){
+						try{
+							hib.getUpdate(name,password_1);
+							System.out.println("密码修改成功");
+							tishi = "密码修改成功"; 
+						}
+						catch (Exception e){
+							tishi = "用户不存在！";
+						}
+					}
+					else {
+						tishi = "请输入相同密码";	
+					}
+				}else {
+					tishi ="请输入密码";
+				}
 			}else{
-				tishi = "没有该用户";
+				tishi = "当前密码错误";
 			}
-			hib.allclose();
-			map.put("sss", this);
-			return "change";
+		}else{
+			tishi = "请输入用户名";
 		}
-		
-		public String getTishi() {
-			return tishi;
-		}
-		public void setTishi(String tishi) {
-			this.tishi = tishi;
-		}
-		
+		hib.allclose();
+		map.put("sss", this);
+		return "change";
+	}
+
+	public String getTishi() {
+		return tishi;
+	}
+	public void setTishi(String tishi) {
+		this.tishi = tishi;
+	}
+
 	//数据删除方法
 	public String delete(){
 		HibUtility hib = new HibUtility();
@@ -236,8 +240,8 @@ public class LoginAction extends ActionSupport implements RequestAware{
 			}
 		if(getShouPage() != null){
 			if(getShouPage().equals("首页")){
-			p = 1;
-			map.put("ts_2", "首页");
+				p = 1;
+				map.put("ts_2", "首页");
 			}
 		}
 		if(getMoPage() !=null){
@@ -253,7 +257,7 @@ public class LoginAction extends ActionSupport implements RequestAware{
 		ActionContext.getContext().put("list", list);
 		return "success";
 	}
-	
+
 	public String number(){
 		HibUtility hib = new HibUtility();
 		hib.getSession();
@@ -266,7 +270,7 @@ public class LoginAction extends ActionSupport implements RequestAware{
 		map.put("sss", this);
 		return "index";
 	}
-	
+
 	public String execute() {
 		try{
 			System.out.println("LoginAction中：");

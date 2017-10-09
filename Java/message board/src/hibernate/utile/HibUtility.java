@@ -1,5 +1,7 @@
 package hibernate.utile;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 import org.hibernate.Query;
@@ -180,14 +182,13 @@ public class HibUtility {
 		this.complaints = complaints;
 	}
 
-	//update 操作
 	/**
-	 * 执行修改操作方法
-	 * 用id选择记录修改name字段
+	 * update 操作
 	 * @param name 修改
 	 * @param id 选择的记录
 	 * @return boolean
 	 * */
+	
 	public boolean getUpdate(String number,int id ){
 
 		//第一种方法的修改
@@ -236,6 +237,54 @@ public class HibUtility {
 			}
 			return fleat;
 		}
+		
+		
+		//回复留言
+		public boolean getUpdate(int id, String reply, String r_content, String m_object){
+			
+			//字符串分割
+			String [] m_object_s=m_object.split(",");//将获取的留言对象从“，”分割
+			
+			//格式化创建当前回复时间
+			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+			String r_time = sdf.format(new Date());
+			
+			//创建hql语句
+			Query qupdate = null;
+			String hql;
+			if(!m_object.equals("false,false") && m_object!=null){
+				hql ="update Message set reply = :reply, r_content = :r_content, m_object1 = :m_object1, m_object2 = :m_object2, r_time = :r_time where id = :id";
+				System.out.println("运行第一句");
+				
+				//给各字段赋值
+				qupdate =session.createQuery(hql); 
+				qupdate.setParameter("m_object1", m_object_s[0]);
+				qupdate.setParameter("m_object2", m_object_s[1]);
+				qupdate.setParameter("id", id);
+				qupdate.setParameter("reply", reply);
+				qupdate.setParameter("r_content", r_content);
+				qupdate.setParameter("r_time", r_time);
+			}else{
+				hql ="update Message set reply = :reply, r_content = :r_content, r_time = :r_time where id = :id";
+				System.out.println("运行第二句");
+				
+				//给各字段赋值
+				qupdate =session.createQuery(hql); 
+				qupdate.setParameter("id", id);
+				qupdate.setParameter("reply", reply);
+				qupdate.setParameter("r_content", r_content);
+				qupdate.setParameter("r_time", r_time);
+			}
+			
+			//执行
+			int i=qupdate.executeUpdate();
+			System.out.println(i);
+			if(i!=0){
+				fleat = true;
+			}
+			return fleat;
+		}
+		
 		
 		
 	//insert操作
