@@ -50,7 +50,7 @@ public class HibUtility {
 	//获取指定条数的留言列表
 	public List<Message> getSelect(int page){
 		//hql语句
-		String hql ="from Message message order by message.id";
+		String hql ="from Message message where message.m_object2 = '数学与财经学院' order by message.id";
 		Query query =(Query) session.createQuery(hql);
 		//实例list 存储结果集
 		query.setFirstResult(page * 10);//设置起始行数，从0开始计数
