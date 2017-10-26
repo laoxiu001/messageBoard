@@ -27,7 +27,7 @@ public class HibUtility {
 	private int consulting = 1;
 	private int suggest = 1;
 	private int complaints = 1;
-	
+
 	//获取Session 
 	/**
 	 * 创建工厂会话
@@ -46,7 +46,7 @@ public class HibUtility {
 		Transaction = session.beginTransaction();
 		return session;
 	}
-	
+
 	//获取指定条数的留言列表
 	public List<Message> getSelect(int page){
 		//hql语句
@@ -56,11 +56,11 @@ public class HibUtility {
 		query.setFirstResult(page * 10);//设置起始行数，从0开始计数
 		query.setMaxResults(10);//设置返回的行数
 		List<Message> list = query.list();
-        System.out.println("page=" + page);
+		System.out.println("page=" + page);
 
 		return list;
 	}
-	
+
 	//获取指定id的留言内容
 	public List<Message> getMessage(int id){
 		//hql语句
@@ -72,10 +72,59 @@ public class HibUtility {
 		//实例list 存储结果集
 		List<Message> list = query.list();
 		System.out.println("用户查询id = " + id);
-		
+
 		return list;
 	}
-	
+	//查询用户名是否重复
+		public boolean inf_p(String user,String id_1){
+			//hql语句
+			boolean b = true;
+			int id = Integer.parseInt(id_1);
+			System.out.println("id="+id);
+			String hql ="from User where user = :user ";
+			Query query =(Query) session.createQuery(hql);
+			//实例list 存储结果集
+			query.setParameter("user",user);
+			List<User> list = query.list();
+			for(User l : list){
+				if(l.getId()== id){
+					b =true;
+				}else{
+					b = false;
+				}
+			}
+			return b ;
+		}
+	//个人信息查询
+	public List<User> inf(String id_1){
+		//hql语句
+		int id = Integer.parseInt(id_1);
+		System.out.println("id="+id);
+		String hql ="from User where id = :id ";
+		Query query =(Query) session.createQuery(hql);
+		//实例list 存储结果集
+		query.setParameter("id",id);
+		List<User> list = query.list();
+		return list ;
+	}
+	//修改个人资料
+	public boolean inf_u(String user,String department,String tel,String email,int id){
+		boolean b = false;
+		String hql ="update User set user = :user, department = :department , "
+				+ "tel = :tel,email = :email where id = :id ";
+		Query qupdete = session.createQuery(hql);
+		qupdete.setParameter("user", user);
+		qupdete.setParameter("department", department);
+		qupdete.setParameter("tel", tel);
+		qupdete.setParameter("email", email);
+		qupdete.setParameter("id", id);
+		System.out.println(hql);
+		int i =qupdete.executeUpdate();
+		if(i!=0){
+			b = true;
+		}
+		return b;
+	}
 	//统计记录总条数方法
 	public int count(){
 		//hql语句
@@ -84,63 +133,65 @@ public class HibUtility {
 		//实例list 存储结果集
 		int count = 0;
 		List<Message> list = query.list();
-	    for (Message l : list) {
-	    	System.out.println(l.getId());
-	        count++;
+		for (Message l : list) {
+			System.out.println(l.getId());
+			count++;
 		}
-	    System.out.println("count=" + count);
+		System.out.println("count=" + count);
 		return count;
 	}
-	
-	//查询用户名
-		public int getSelect_User(String user){
-			//hql语句
-			String hql ="from User ";
-			Query query =(Query) session.createQuery(hql);
-			//实例list 存储结果集
-			int count = 0;
-			List<User> list = query.list();
-		    for (User l : list) {
-		    	if(l.getUser().toString().equals(user)){
-		    		count = 1;
-		    	}
-			}
-			return count;
+
+	//查询密码是否正确
+	public int getSelect_User(String password,String id_1){
+		//hql语句
+		String hql ="from User where id = :id and password = :password";
+		Query query =(Query) session.createQuery(hql);
+		//实例list 存储结果集
+		int count = 0;
+		int id = Integer.parseInt(id_1);
+		query.setParameter("id", id);
+		query.setParameter("password", password);
+		System.out.println("password="+password+"id="+id);
+		List<User> list = query.list();
+		for(User l : list){
+			count = 1;
 		}
-	
+		return count;
+	}
+
 	//判断已读条数和未读条数
-		public int number(){
-			String hql ="from Message";
-			Query query =(Query) session.createQuery(hql);
-			int i = 0 ;//已回复条数
-			int j = 0 ;//未回复条数
-			int a = 0;
-			int b = 0;
-			int c = 0;
-			List<Message> list = query.list();
-			//向需要的数据赋值
-			for (Message m : list) {
-				if(m.getStatus()== 1){
-					i++;
-				}else{
-					j++;
-				}
-				System.out.println("已回复内容i = " + i);
-				System.out.println("未回复内容j = " + j);
-				if(m.getType().toString().equals("咨询")){
-					a++;
-				}else if(m.getType().toString().equals("建议")){
-					b++;
-				}else if(m.getType().toString().equals("投诉")){
-					c++;
-				}
-				}
-			consulting = a;
-			suggest = b;
-			complaints = c;
-			return i;
+	public int number(){
+		String hql ="from Message";
+		Query query =(Query) session.createQuery(hql);
+		int i = 0 ;//已回复条数
+		int j = 0 ;//未回复条数
+		int a = 0;
+		int b = 0;
+		int c = 0;
+		List<Message> list = query.list();
+		//向需要的数据赋值
+		for (Message m : list) {
+			if(m.getStatus()== 1){
+				i++;
+			}else{
+				j++;
 			}
-		
+			System.out.println("已回复内容i = " + i);
+			System.out.println("未回复内容j = " + j);
+			if(m.getType().toString().equals("咨询")){
+				a++;
+			}else if(m.getType().toString().equals("建议")){
+				b++;
+			}else if(m.getType().toString().equals("投诉")){
+				c++;
+			}
+		}
+		consulting = a;
+		suggest = b;
+		complaints = c;
+		return i;
+	}
+
 	//delete操作
 	/**
 	 * 执行删除操作方法
@@ -188,7 +239,7 @@ public class HibUtility {
 	 * @param id 选择的记录
 	 * @return boolean
 	 * */
-	
+
 	public boolean getUpdate(String number,int id ){
 
 		//第一种方法的修改
@@ -212,81 +263,100 @@ public class HibUtility {
 		}
 		return fleat;
 	}
-	
-	//修改用户密码
-		public boolean getUpdate(String user, String password){
 
-			//第一种方法的修改
-			/*
+	//修改用户密码
+	public boolean getUpdate(String user, String password){
+
+		//第一种方法的修改
+		/*
 			//选取所要操作的列
 			student =(Student) session.get(Student.class,"8103");
 			//修改过后的值
 			student.setNAME("谭永超");
 			session.save(student);
-			 */
-			//第二种 ihql语句修改操作
-			String hql ="update User set password = :password  where user = :user";
-			Query qupdate =session.createQuery(hql); 
-			qupdate.setParameter("user", user);
-			qupdate.setParameter("password", password);
-			//执行
-			int i=qupdate.executeUpdate();
-			System.out.println(i);
-			if(i!=0){
-				fleat = true;
-			}
-			return fleat;
+		 */
+		//第二种 ihql语句修改操作
+		String hql ="update User set password = :password  where user = :user";
+		Query qupdate =session.createQuery(hql); 
+		qupdate.setParameter("user", user);
+		qupdate.setParameter("password", password);
+		//执行
+		int i=qupdate.executeUpdate();
+		System.out.println(i);
+		if(i!=0){
+			fleat = true;
 		}
-		
-		
-		//回复留言
-		public boolean getUpdate(int id, String reply, String r_content, String m_object){
-			
-			//字符串分割
-			String [] m_object_s=m_object.split(",");//将获取的留言对象从“，”分割
-			
-			//格式化创建当前回复时间
-			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
-			String r_time = sdf.format(new Date());
-			
-			//创建hql语句
-			Query qupdate = null;
-			String hql;
-			if(!m_object.equals("false,false") && m_object!=null){
-				hql ="update Message set reply = :reply, r_content = :r_content, m_object1 = :m_object1, m_object2 = :m_object2, r_time = :r_time where id = :id";
-				System.out.println("运行第一句");
-				
-				//给各字段赋值
-				qupdate =session.createQuery(hql); 
-				qupdate.setParameter("m_object1", m_object_s[0]);
-				qupdate.setParameter("m_object2", m_object_s[1]);
-				qupdate.setParameter("id", id);
-				qupdate.setParameter("reply", reply);
-				qupdate.setParameter("r_content", r_content);
-				qupdate.setParameter("r_time", r_time);
-			}else{
-				hql ="update Message set reply = :reply, r_content = :r_content, r_time = :r_time where id = :id";
-				System.out.println("运行第二句");
-				
-				//给各字段赋值
-				qupdate =session.createQuery(hql); 
-				qupdate.setParameter("id", id);
-				qupdate.setParameter("reply", reply);
-				qupdate.setParameter("r_content", r_content);
-				qupdate.setParameter("r_time", r_time);
-			}
-			
-			//执行
-			int i=qupdate.executeUpdate();
-			System.out.println(i);
-			if(i!=0){
-				fleat = true;
-			}
-			return fleat;
+		return fleat;
+	}
+
+
+	//回复留言
+	public boolean getUpdate(int id, String reply, String r_content, String m_object){
+
+		//字符串分割
+		String [] m_object_s=m_object.split(",");//将获取的留言对象从“，”分割
+
+		//格式化创建当前回复时间
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+		String r_time = sdf.format(new Date());
+
+		//创建hql语句
+		Query qupdate = null;
+		String hql;
+		if(!m_object.equals("false,false") && m_object!=null){
+			hql ="update Message set reply = :reply, r_content = :r_content, m_object1 = :m_object1, m_object2 = :m_object2, r_time = :r_time where id = :id";
+			System.out.println("运行第一句");
+
+			//给各字段赋值
+			qupdate =session.createQuery(hql); 
+			qupdate.setParameter("m_object1", m_object_s[0]);
+			qupdate.setParameter("m_object2", m_object_s[1]);
+			qupdate.setParameter("id", id);
+			qupdate.setParameter("reply", reply);
+			qupdate.setParameter("r_content", r_content);
+			qupdate.setParameter("r_time", r_time);
+		}else{
+			hql ="update Message set reply = :reply, r_content = :r_content, r_time = :r_time where id = :id";
+			System.out.println("运行第二句");
+
+			//给各字段赋值
+			qupdate =session.createQuery(hql); 
+			qupdate.setParameter("id", id);
+			qupdate.setParameter("reply", reply);
+			qupdate.setParameter("r_content", r_content);
+			qupdate.setParameter("r_time", r_time);
 		}
-		
-		
-		
+		int i=qupdate.executeUpdate();
+		System.out.println(i);
+		if(i!=0){
+			fleat = true;
+		}
+		return fleat;
+	}
+	
+	//修改标志变量
+	public boolean getUpdate(int id ){
+		//第一种方法的修改
+		/*
+				//选取所要操作的列
+				student =(Student) session.get(Student.class,"8103");
+				//修改过后的值
+				student.setNAME("谭永超");
+				session.save(student);
+		 */
+		//第二种 ihql语句修改操作
+		String hql ="update Message set status = 1 where id = :id";
+		Query qupdate =session.createQuery(hql);
+		qupdate.setParameter("id", id);
+		//执行
+		int i=qupdate.executeUpdate();
+		System.out.println(i);
+		if(i!=0){
+			fleat = true;
+		}
+		return fleat;
+	}
+
 	//insert操作
 	/**
 	 * 执行增加记录操作方法

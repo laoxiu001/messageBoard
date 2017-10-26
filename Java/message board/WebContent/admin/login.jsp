@@ -36,7 +36,7 @@
 		<div id="top_right" class="fr col-xs-6">
 			<div class="school">
 				<ul>
-					<li class="clrli"><a class="clra" href="#">学校概况</a></li>
+					<li class="clrli"><a class="clra" href="<%=basePath%>/index.jsp">返回首页</a></li>
 					<li class="clrli"><a class="clra" href="#">创新创业</a></li>
 					<li class="clrli"><a class="clra" href="#">教学科研</a></li>
 					<li class="clrli"><a class="clra" href="#">校园文化</a></li>

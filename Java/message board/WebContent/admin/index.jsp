@@ -55,7 +55,7 @@
 							src="<%=basePath%>/img/admin/logout.png">注销退出</a></li>
 					<li class="clrli"><a href=""><img
 							src="<%=basePath%>/img/admin/inf.png">个人资料</a></li>
-				</ul> </span> <a class="span4" id="top_user">欢迎回家，用户12138 </a>
+				</ul> </span> <a class="span4" id="top_user">欢迎回家，用户${sss.session}  </a>
 
 		</div>
 	</div>
@@ -69,7 +69,7 @@
 					</div>
 
 					<div id="left_visiable_userid">
-						<a>编号：1056314532</a>
+						<a>编号：${sss.session} </a>
 					</div>
 
 					<div id="nav">
@@ -78,9 +78,9 @@
 									alt="" src="<%=basePath%>/img/admin/index.png"> 首页概览</a></li>
 							<li class="clrli"><a href="<%=basePath%>/admin/reply_s"><img
 									alt="" src="<%=basePath%>/img/admin/reply.png"> 回复留言</a></li>
-							<li class="clrli"><a href="<%=basePath%>/admin/change.jsp"><img
+							<li class="clrli"><a href="<%=basePath%>/admin/change_1"><img
 									alt="" src="<%=basePath%>/img/admin/change.png"> 修改密码</a></li>
-							<li class="clrli"><a href=""><img
+							<li class="clrli"><a href="<%=basePath%>/admin/inf"><img
 									alt="<%=basePath%>/admin/inf.jsp"
 									src="<%=basePath%>/img/admin/inf.png"> 个人资料</a></li>
 						</ul>

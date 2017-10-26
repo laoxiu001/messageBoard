@@ -2,18 +2,18 @@
 <!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
 "http://struts.apache.org/dtds/struts-2.0.dtd">
 <struts>
-<!-- 解决中文乱码问题 -->
-  <constant name="struts.i18n.encoding" value="UTF-8"></constant>
+<constant name="struts.i18n.encoding" value="UTF-8"></constant>
 <constant name="struts.locale" value="zh_CN"></constant>
-<!-- 解决中文乱码问题 -->
-
- <constant name="struts.devMode" value="true"></constant>
+<!-- <constant name="struts.devMode" value="true"></constant> -->
     <package name="login" namespace="/admin" extends="struts-default">
         <interceptors>
+              <!-- 编码拦截器 -->  
+    		 <interceptor name="Encoding" class="admin.filter.EncodingInterceptor"></interceptor>  
             <!-- 自定义的拦截器 -->
             <interceptor name="interceptorLogin" class="admin.interceptor.AdminInterceptor"></interceptor>
             <!-- 将自定义的拦截器打包到一个拦截器栈 -->
             <interceptor-stack name="customStack">
+            	<interceptor-ref name="Encoding"></interceptor-ref>  
                 <interceptor-ref name="defaultStack"></interceptor-ref>
                 <interceptor-ref name="interceptorLogin"></interceptor-ref>
             </interceptor-stack>
@@ -25,7 +25,7 @@
             <result name="login">/admin/login.jsp</result>
         </global-results>
         <action name="login" class="admin.struts.LoginAction">
-            <result name="success">/admin/reply.jsp</result>
+            <result name="success" type="chain">index</result>
             <result name="wrong">/admin/login.jsp</result>
         </action>
         <action name="logout" class="admin.struts.LogoutAction">
@@ -34,24 +34,32 @@
         <action name="reply" class="admin.struts.LogoutAction">
             <result name="success">/admin/login.jsp</result>
         </action>
-        <action name="reply_s" class="admin.struts.LoginAction" method ="pagingQuery">
+        <action name="reply_s"  class="admin.struts.LoginAction" method ="pagingQuery">
             <result name="success">/admin/reply.jsp</result>
         </action>
-        <action name="reply_inf" class="admin.struts.ReplyAction" method ="showMessage">
+        <action name="reply_inf"  class="admin.struts.ReplyAction" method ="showMessage">
             <result name="success">/admin/message.jsp</result>
         </action>
-        <action name="reply_d" class="admin.struts.LoginAction" method ="delete">
+        <action name="reply_d"  class="admin.struts.LoginAction" method ="delete">
             <result name="success">/admin/reply.jsp</result>
         </action>
-        <action name="index" class="admin.struts.LoginAction" method ="number">
+        <action name="index"  class="admin.struts.LoginAction" method ="number">
             <result name="index">/admin/index.jsp</result>
         </action>
-        <action name="change" class="admin.struts.LoginAction" method ="change">
+        <action name="change"  class="admin.struts.LoginAction" method ="change">
             <result name="change">/admin/change.jsp</result>
         </action>
-        <action name="modify" class="admin.struts.ReplyAction" method ="modify">
-            <result name="success" type="chain">reply_s</result>
-        </action>
+       <action name="inf"  class="admin.struts.LoginAction" method ="inf">
+            <result name="inf">/admin/inf.jsp</result>
+       </action>
+        <action name="inf_u"  class="admin.struts.LoginAction" method ="inf_u">
+            <result name="inf">/admin/inf.jsp</result>
+       </action>
+      <action name="change_1"  class="admin.struts.LoginAction" method ="change_1">
+            <result name="change_1">/admin/change.jsp</result>
+       </action>
+     <action name="modify" class="admin.struts.ReplyAction" method ="modify">
+      		<result name="success" type="chain">reply_s</result>
+      </action>
     </package>
-  	
 </struts>

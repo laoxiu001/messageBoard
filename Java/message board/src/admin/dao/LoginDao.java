@@ -11,6 +11,13 @@ public class LoginDao {
 	/*
 	 * 这是管理员后台登陆功能的数据库操作类
 	 */
+	private int id ;//
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
+	}
 	private boolean isSuccess = false;
 	@SuppressWarnings("finally")
 	/*
@@ -69,7 +76,10 @@ public class LoginDao {
 				System.out.println("用户名" + user);
 				System.out.println("密码" + password);
 				
-				List list = queryObject.list();
+				List<User> list = queryObject.list();
+				for(User l : list){
+				setId(l.getId());
+				}
 				if (list.size()>0) {
 					System.out.println("验证用户是否存在的list集合大小为：" + list.size());
 					isSuccess = true;

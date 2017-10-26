@@ -369,7 +369,7 @@
 		<div id="bottom_text">
 			<a> 版权所有 2011 重庆文理学院 地址: 重庆市永川区红河大道319号 邮编: 402160</br>
 				校友会电话：023-49891798 校办电话：023-49891910
-			</a> <a href="#" class="admin">管理登录</a>
+			</a> <a href="<%=basePath %>/admin/login.jsp" class="admin">管理登录</a>
 		</div>
 	</div>
 </body>

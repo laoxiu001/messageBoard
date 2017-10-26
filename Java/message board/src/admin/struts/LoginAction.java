@@ -1,19 +1,24 @@
 package admin.struts;
 
+import hibernate.utile.HibUtility;
+
+import java.io.UnsupportedEncodingException;
 import java.util.List;
 import java.util.Map;
 
 import org.apache.struts2.ServletActionContext;
 import org.apache.struts2.interceptor.RequestAware;
+import org.apache.struts2.interceptor.SessionAware;
+import org.hibernate.Hibernate;
+
+import admin.dao.LoginDao;
+import admin.dao.Message;
+import admin.dao.User;
 
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 
-import admin.dao.LoginDao;
-import admin.dao.Message;
-import hibernate.utile.HibUtility;
-
-public class LoginAction extends ActionSupport implements RequestAware{
+public class LoginAction extends ActionSupport implements RequestAware,SessionAware{
 	/**
 	 * 此处是登陆权限验证
 	 * 和留言列表显示数据Action
@@ -21,14 +26,12 @@ public class LoginAction extends ActionSupport implements RequestAware{
 	private static final long serialVersionUID = 1L;
 	private StringBuffer sb;
 	private String page;//当前页数
-	private String user;
 	private String password;
 	private String theNextPage;
 	private String previousPage;
 	private String shouPage;
 	private String moPage;
 	private int id ;
-
 	private int consulting;//咨询
 	private int suggest;//建议
 	private int complaints;//投诉
@@ -39,6 +42,40 @@ public class LoginAction extends ActionSupport implements RequestAware{
 	private String name;
 	private String password_1;
 	private String password_2;
+
+	//session	储存用户名
+	private String  session;
+	//map 对象
+	Map<String,Object> map = null;
+	//user 参数
+	private String department;
+	private String tel;
+	private String email;
+	private String user;
+	public String getSession() {
+		return session;
+	}
+	public void setSession(String session) {
+		this.session = session;
+	}
+	public String getDepartment() {
+		return department;
+	}
+	public void setDepartment(String department) {
+		this.department = department;
+	}
+	public String getTel() {
+		return tel;
+	}
+	public void setTel(String tel) {
+		this.tel = tel;
+	}
+	public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
+		this.email = email;
+	}
 	public String getName() {
 		return name;
 	}
@@ -58,8 +95,6 @@ public class LoginAction extends ActionSupport implements RequestAware{
 		this.password_2 = password_2;
 	}
 	private String tishi;
-
-
 	public int getI() {
 		return i;
 	}
@@ -115,7 +150,6 @@ public class LoginAction extends ActionSupport implements RequestAware{
 	public void setPreviousPage(String previousPage) {
 		this.previousPage = previousPage;
 	}
-	Map<String,Object> map = null;
 	public String getShouPage() {
 		return shouPage;
 	}
@@ -158,50 +192,74 @@ public class LoginAction extends ActionSupport implements RequestAware{
 	public void setPassword(String password) {
 		this.password = password;
 	}
-
-	//修改用户名操作
-	public String change(){
-		HibUtility hib = new HibUtility();
-		hib.getSession();
-		if(!name.equals("")&&name!=null){
-			if(hib.getSelect_User(name)==1){
-				if(getPassword_1()!="" ){
-					if(getPassword_1().equals(getPassword_2())){
-						try{
-							hib.getUpdate(name,password_1);
-							System.out.println("密码修改成功");
-							tishi = "密码修改成功"; 
-						}
-						catch (Exception e){
-							tishi = "用户不存在！";
-						}
-					}
-					else {
-						tishi = "请输入相同密码";	
-					}
-				}else {
-					tishi ="请输入密码";
-				}
-			}else{
-				tishi = "当前密码错误";
-			}
-		}else{
-			tishi = "请输入用户名";
-		}
-		hib.allclose();
-		map.put("sss", this);
-		return "change";
-	}
-
 	public String getTishi() {
 		return tishi;
 	}
 	public void setTishi(String tishi) {
 		this.tishi = tishi;
 	}
-
+	//修改密码页面
+	public String change_1(){
+		session = ServletActionContext.getRequest().getSession().getAttribute("user").toString();
+		map.put("sss", this);
+		return "change_1";
+	}
+	//修改个人信息操作
+	public String inf_u() throws Exception{
+		session = ServletActionContext.getRequest().getSession().getAttribute("user").toString();
+		HibUtility hib = new HibUtility();
+		hib.getSession();
+		String i = ServletActionContext.getRequest().getSession().getAttribute("id").toString();
+		if(hib.inf_p(user,i) || hib.inf_p(user,"1")){
+		System.out.println("department="+department);
+		hib.inf_u(user, department, tel, email,id);
+		tishi = "信息修改成功";
+		}else{
+			System.out.println("用户名已存在");
+			tishi = "用户名已存在";	
+		}
+		hib.allclose();
+		hib.getSession();
+		List <User> list = hib.inf(i);
+		ActionContext.getContext().put("list", list);
+		map.put("sss", this);
+		hib.allclose();
+		return "inf";
+	}
+	//修改用户名操作
+	public String change(){
+		session = ServletActionContext.getRequest().getSession().getAttribute("user").toString();
+		String i = ServletActionContext.getRequest().getSession().getAttribute("id").toString();
+		HibUtility hib = new HibUtility();
+		hib.getSession();
+		if(hib.getSelect_User(password,i)==1){
+			if(getPassword_1()!="" ){
+				if(getPassword_1().equals(getPassword_2())){
+					try{
+						hib.getUpdate(i,password_1);
+						System.out.println("密码修改成功");
+						tishi = "密码修改成功"; 
+					}
+					catch (Exception e){
+						tishi = "请确定密码是否正确";
+					}
+				}
+				else {
+					tishi = "请输入相同密码";
+				}
+			}else {
+				tishi ="密码不能为空";
+			}
+		}else{
+			tishi = "请确定密码是否正确";
+		}
+		hib.allclose();
+		map.put("sss", this);
+		return "change";
+	}
 	//数据删除方法
 	public String delete(){
+		session = ServletActionContext.getRequest().getSession().getAttribute("user").toString();
 		HibUtility hib = new HibUtility();
 		hib.getSession();
 		if(hib.getDelete(getId())){
@@ -214,6 +272,7 @@ public class LoginAction extends ActionSupport implements RequestAware{
 		return "success";
 	}
 	public String pagingQuery() throws Exception{
+		session = ServletActionContext.getRequest().getSession().getAttribute("user").toString();
 		int count = 1;//	查询总记录数
 		HibUtility hib = new HibUtility();
 		hib.getSession();
@@ -257,8 +316,9 @@ public class LoginAction extends ActionSupport implements RequestAware{
 		ActionContext.getContext().put("list", list);
 		return "success";
 	}
-
+	//记录各种数据条数
 	public String number(){
+		session = ServletActionContext.getRequest().getSession().getAttribute("user").toString();
 		HibUtility hib = new HibUtility();
 		hib.getSession();
 		i =hib.number();
@@ -270,18 +330,26 @@ public class LoginAction extends ActionSupport implements RequestAware{
 		map.put("sss", this);
 		return "index";
 	}
-
+	//个人资料
+	public String inf(){
+		session = ServletActionContext.getRequest().getSession().getAttribute("user").toString();
+		HibUtility hib = new HibUtility();
+		hib.getSession();
+		List <User> list = hib.inf(ServletActionContext.getRequest().getSession().getAttribute("id").toString());
+		hib.allclose();
+		ActionContext.getContext().put("list", list);
+		map.put("sss",this);
+		return "inf";
+	}
 	public String execute() {
+		LoginDao ld = new LoginDao();
 		try{
-			System.out.println("LoginAction中：");
-			System.out.println(user);
-			System.out.println(password);
-			LoginDao ld = new LoginDao();
 			if(ld.login(user,password)){
+				ServletActionContext.getRequest().getSession().setAttribute("user", user);
+				ServletActionContext.getRequest().getSession().setAttribute("id", ld.getId());
 				System.out.println("登陆成功");
 				//修改代表登录状态的静态变量
 				ServletActionContext.getRequest().getSession().setAttribute("login_sta", "OK");
-				System.out.println("LoginAction中login_sta状态：" + "OK");
 				HibUtility hib = new HibUtility();
 				hib.getSession();
 				List<Message> list = hib.getSelect(0);
@@ -318,6 +386,7 @@ public class LoginAction extends ActionSupport implements RequestAware{
 					}
 					sb.append(" ");
 				}*/
+				session = ServletActionContext.getRequest().getSession().getAttribute("user").toString();
 				map.put("sss",this);
 				ActionContext.getContext().put("list", list);
 				return "success";
@@ -337,13 +406,17 @@ public class LoginAction extends ActionSupport implements RequestAware{
 			System.out.println("登陆失败");
 			return "wrong";
 		}
-
 	}
 
 	@Override
 	public void setRequest(Map<String, Object> map) {
 		// TODO Auto-generated method stub
 		this.map = map;
+
+	}
+	@Override
+	public void setSession(Map<String, Object> arg0) {
+		// TODO Auto-generated method stub
 
 	}
 }
