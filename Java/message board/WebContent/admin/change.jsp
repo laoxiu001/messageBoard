@@ -85,21 +85,21 @@
 							<div class="form-group">
 								<label for="inputEmail3" class="col-sm-2 control-label">当前密码</label>
 								<div class="col-sm-10">
-									<input name = "password" class="form-control" id="" placeholder="请输入您的当前密码"
+									<input type="password" name = "password" class="form-control" id="" placeholder="请输入您的当前密码"
 										style="width: 250px;">
 								</div>
 							</div>
 							<div class="form-group">
 								<label for="inputEmail3" class="col-sm-2 control-label">新密码</label>
 								<div class="col-sm-10">
-									<input name="password_1" class="form-control" id="" placeholder="请输入您要修改的新密码"
+									<input type="password" name="password_1" class="form-control" id="" placeholder="请输入您要修改的新密码"
 										style="width: 250px;">
 								</div>
 							</div>
 							<div class="form-group">
 								<label for="inputEmail3" class="col-sm-2 control-label" >确认新密码</label>
 								<div class="col-sm-10">
-									<input name ="password_2" class="form-control" id="" placeholder="请再次输入您设置的新密码"
+									<input type="password" name ="password_2" class="form-control" id="" placeholder="请再次输入您设置的新密码"
 										style="width: 250px;">
 								</div>
 							</div>
