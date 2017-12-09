@@ -201,7 +201,9 @@
 										</tr>
 										<%
 											ListDao ls = new ListDao();
-											String object = new String(request.getParameter("object").getBytes("ISO-8859-1"), "UTF-8");//获得留言对象
+										
+											request.setCharacterEncoding("UTF-8");//设置编码
+											String object = new String(request.getParameter("object"));//获取object
 											String sql = "";
 
 											if (object.equals("")) {
@@ -369,7 +371,7 @@
 		<div id="bottom_text">
 			<a> 版权所有 2011 重庆文理学院 地址: 重庆市永川区红河大道319号 邮编: 402160</br>
 				校友会电话：023-49891798 校办电话：023-49891910
-			</a> <a href="<%=basePath %>/admin/login.jsp" class="admin">管理登录</a>
+			</a> <a href="<%=basePath%>/admin/login.jsp" class="admin">管理登录</a>
 		</div>
 	</div>
 </body>
