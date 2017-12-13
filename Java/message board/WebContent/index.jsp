@@ -88,7 +88,7 @@
 </script>
 </head>
 <body>
-	<div class="container-fluid">
+	<div class="container" style="width:1300px;">
 		<div id="top" class="row">
 			<div id="top_left" class="fl col-xs-6">
 				<a href="#"><img src="<%=basePath%>/img/logo1.png" alt="Logo"></a>
@@ -178,9 +178,9 @@
 				</div>
 				<table width="100%">
 					<tr class="single">
-						<td width="50px">编号</td>
-						<td>标题</td>
-						<td width="120px">日期</td>
+						<td><b>序号</b></td>
+						<td><b>标题</b></td>
+						<td width="120px"><b>日期</b></td>
 					</tr>
 					<%
 						ListDao ls = new ListDao();
@@ -195,7 +195,7 @@
 						onclick="window.document.location = 'Details.jsp?index=<%out.print(map.get("id"));%>'">
 						<td>
 							<%
-								out.print(map.get("id"));
+							out.print(i + 1);
 							%>
 						</td>
 						<td>
@@ -216,7 +216,7 @@
 						onclick="window.document.location = 'Details.jsp?index=<%out.print(map.get("id"));%>'">
 						<td>
 							<%
-								out.print(map.get("id"));
+							out.print(i + 1);
 							%>
 						</td>
 						<td>
@@ -248,9 +248,9 @@
 				</div>
 				<table width="100%">
 					<tr class="single">
-						<td width="50px">编号</td>
-						<td>标题</td>
-						<td width="120px">日期</td>
+						<td><b>序号</b></td>
+						<td><b>标题</b></td>
+						<td width="120px"><b>日期</b></td>
 					</tr>
 					<%
 						ListDao ls1 = new ListDao();
@@ -265,7 +265,7 @@
 						onclick="window.document.location = 'Details.jsp?index=<%out.print(map1.get("id"));%>'">
 						<td>
 							<%
-								out.print(map1.get("id"));
+							out.print(i + 1);
 							%>
 						</td>
 						<td>
@@ -286,7 +286,7 @@
 						onclick="window.document.location = 'Details.jsp?index=<%out.print(map1.get("id"));%>'">
 						<td>
 							<%
-								out.print(map1.get("id"));
+							out.print(i + 1);
 							%>
 						</td>
 						<td>
@@ -319,9 +319,9 @@
 				</div>
 				<table width="100%">
 					<tr class="single">
-						<td width="50px">编号</td>
-						<td>标题</td>
-						<td width="120px">日期</td>
+						<td><b>序号</b></td>
+						<td><b>标题</b></td>
+						<td width="120px"><b>日期</b></td>
 					</tr>
 					<%
 						ListDao ls2 = new ListDao();
@@ -336,7 +336,7 @@
 						onclick="window.document.location = 'Details.jsp?index=<%out.print(map2.get("id"));%>'">
 						<td>
 							<%
-								out.print(map2.get("id"));
+							out.print(i + 1);
 							%>
 						</td>
 						<td>
@@ -357,7 +357,7 @@
 						onclick="window.document.location = 'Details.jsp?index=<%out.print(map2.get("id"));%>'">
 						<td>
 							<%
-								out.print(map2.get("id"));
+							out.print(i + 1);
 							%>
 						</td>
 						<td>
@@ -389,9 +389,9 @@
 				</div>
 				<table width="100%">
 					<tr class="single">
-						<td width="50px">编号</td>
-						<td>标题</td>
-						<td width="120px">日期</td>
+						<td><b>序号</b></td>
+						<td><b>标题</b></td>
+						<td width="120px"><b>日期</b></td>
 					</tr>
 					<%
 						ListDao ls3 = new ListDao();
@@ -406,7 +406,7 @@
 						onclick="window.document.location = 'Details.jsp?index=<%out.print(map3.get("id"));%>'">
 						<td>
 							<%
-								out.print(map3.get("id"));
+							out.print(i + 1);
 							%>
 						</td>
 						<td>
@@ -420,14 +420,14 @@
 							%>
 						</td>
 					</tr>
-					<%
+						<%
 						} else {
 					%>
 					<tr class="single"
 						onclick="window.document.location = 'Details.jsp?index=<%out.print(map3.get("id"));%>'">
 						<td>
 							<%
-								out.print(map3.get("id"));
+							out.print(i + 1);
 							%>
 						</td>
 						<td>

@@ -138,7 +138,10 @@ body{
 	background-color: #00a569;
 }
 tr td{
-    font-size: 17px;
+    font-size: 14px;
+    padding-top:3px;
+    padding-bottom:3px;
+    padding-left:15px;
 }
 @media (max-width: 700px) { 
 	tr td{font-size: 13px;}
@@ -201,7 +204,6 @@ tr:hover{
 }
 .greycontent_visiable{
 	box-shadow:10px 10px 10px #e0e0e0;
-    text-align: center;
     float: right;
     width:100%;
     height: initial;
@@ -221,7 +223,6 @@ tr:hover{
 	line-height:30px;
     background-color: #009999;
     text-align:center;
-    font-size: 18px;
 }
 @media (max-width: 800px) { 
 	.button{
@@ -231,7 +232,13 @@ tr:hover{
 	}
  }
 .jump{
-	font-size: 18px;
+	text-decoration:none;
+	color:white;
+	width:60px;
+	height:30px;
+	line-height:30px;
+    background-color: #009999;
+    text-align:center;
 }
 @media (max-width: 800px) { 
 	.jump{display:none;}
@@ -242,7 +249,6 @@ tr:hover{
 #Latest{
 	margin-top:10px;
 	box-shadow:8px 8px 10px #e0e0e0;
-	text-align: center;
     height:330px;
 }
 @media (max-width: 1100px) { 
@@ -251,7 +257,6 @@ tr:hover{
 #Hot{
 	margin-top:10px;
 	box-shadow:8px 8px 10px #e0e0e0;
-	text-align: center;
     height:330px;
 }
 @media (max-width: 1100px) { 
@@ -259,10 +264,8 @@ tr:hover{
  }
 #Principal{
 	box-shadow:8px 8px 10px #e0e0e0;
-	text-align: center;
     margin-top: 30px;
 	margin-bottom: 20px;
-    width:49%;
     height:330px;
 }
 @media (max-width: 1100px) { 
@@ -270,10 +273,8 @@ tr:hover{
  }
 #Department{
 	box-shadow:8px 8px 10px #e0e0e0;
-	text-align: center;
     margin-top: 30px;
     margin-bottom: 20px;
-    width:49%;
     height:330px;
 }
 @media (max-width: 1100px) { 
@@ -308,7 +309,7 @@ tr:hover{
     margin:10px auto;
 }
 #message_Principal table{
-	text-align:center;
+	
 }
 @media (max-width: 1300px) { 
 	#message_Principal{

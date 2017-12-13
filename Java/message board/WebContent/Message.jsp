@@ -90,7 +90,7 @@
 </script>
 </head>
 <body onload="createCode()">
-	<div class="container-fluid">
+<div class="container" style="width:1300px;">
 		<div id="top" class="row">
 			<div id="top_left" class="fl col-xs-6">
 				<a href="#"><img src="<%=basePath%>/img/logo1.png" alt="Logo"></a>
@@ -186,25 +186,25 @@
 								<tr style="height: 50px">
 									<input type="hidden" name="token" value="<%=token%>">
 									<!-- 隐藏域存储token令牌 -->
-									<td><a style="font-size: 16px width:80px">是否匿名:</a></td>
+									<td><a style="font-size: 16px width:100px">是否匿名:</a></td>
 									<td> <input type="radio" name="choose" checked="checked"
 										onclick="anonymous()">是 <input type="radio"
 										name="choose" onclick="unanonymous()">否&nbsp;</td>
 								</tr>
 								<tr style="height: 50px">
-									<td><a style="font-size: 16px width:80px">用 户：</a>
+									<td><a style="font-size: 16px;width:100px">用 户：</a>
 									<td><input id="user" name="user" type="text" style="width: 70px; height: 30px;" value="保密"></td>
 								</tr>
 								<tr style="height: 50px">
-									<td><a style="font-size:16px;width:80px;">学 号：</a>
+									<td><a style="font-size:16px;width:100px;">学 号：</a>
 									<td><input id="number" name="number" type="text" style="width: 100px; height: 30px;" value="保密"> 
 								</tr style="height: 50px">
-									<td><a style="font-size:16px;width:80px;">标 题：</a></td>
+									<td><a style="font-size:16px;width:100px;">标 题：</a></td>
 									<td><input id="title" name="title" type="text"
 										style="height: 30px;"></td>
 								</tr>
 								<tr style="height: 50px">
-									<td style="font-size:16px;width:80px;"><a>留言类型：</a></td>
+									<td style="font-size:16px;width:100px;"><a>留言类型：</a></td>
 									<td><select name="type" id="type">
 											<option value="点我选择">点我选择</option>
 											<option value="建议">建议</option>
@@ -214,7 +214,7 @@
 									</td>
 								</tr>
 								<tr style="height: 50px">
-									<td style="font-size:16px;width:80px;">
+									<td style="font-size:16px;width:100px;">
 										<a>留言对象：</a>
 									</td>
 									<td>
@@ -242,12 +242,12 @@
 									</td>
 								</tr>
 								<tr>
-									<td style="font-size:16px;width:80px;">留言内容：</td>
+									<td style="font-size:16px;width:100px;">留言内容：</td>
 									<td><textarea id="m_content" name="m_content" id=""
 											cols="55" rows="10"></textarea></td>
 								</tr>
 								<tr style="height: 50px">
-									<td style="font-size:16px;width:80px;">验 证 码：</td>
+									<td style="font-size:16px;width:100px;">验 证 码：</td>
 									<td>
 										<div class="code" alt="看不清？点我刷新验证码" id="checkCode"
 											onclick="createCode()"></div> <input

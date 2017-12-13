@@ -65,7 +65,7 @@
 	</script>
 </head>
 <body>
-<div class="container-fluid">
+<div class="container" style="width:1300px;">
 		<div id="top" class="row">
 			<div id="top_left" class="fl col-xs-6">
 				<a href="#"><img src="<%=basePath%>/img/logo1.png" alt="Logo"></a>
@@ -155,7 +155,7 @@
 			<div class="greycontent_visiable">
 					<table width="100%">
 						<tr class="single">
-							<td width="80px">留言编号</td>
+							<td width="80px">序号</td>
 							<td>留言标题</td>
 							<td width="150px">留言对象</td>
 							<td width="110px">留言时间</td>
@@ -190,7 +190,7 @@
 						<tr class="double" onclick="window.document.location = 'Details.jsp?index=<%out.print(map.get("id"));%>'">
 							<td>
 								<%
-									out.print(map.get("id"));
+								out.print(i + 1);
 								%>
 							</td>
 							<td>
@@ -225,7 +225,7 @@
 						<tr class="single" onclick="window.document.location = 'Details.jsp?index=<%out.print(map.get("id"));%>'">
 							<td>
 								<%
-									out.print(map.get("id"));
+								out.print(i + 1);
 								%>
 							</td>
 							<td>
@@ -272,13 +272,13 @@
 								href="Latest.jsp?pageIndex=<%=pageIndex + 1%>">下一页</a>
 							<a class="button" href="Latest.jsp?pageIndex=<%=totalPage%>">末
 								页</a>
-							<a class="jump">第</a>
-							<input class="jump" name="pageIndex" type="text"
+							<a class="">第</a>
+							<input class="" name="pageIndex" type="text"
 								value="<%=pageIndex%>" style="width: 30px;">
-							<a> <a class="jump">页</a>&nbsp;/&nbsp; <a class="jump">共</a>
-								<input class="jump" name="totalPage" type="text"
+							<a> <a class="">页</a>&nbsp;/&nbsp; <a class="">共</a>
+								<input class="" name="totalPage" type="text"
 								value="<%=totalPage%>" style="width: 30px;" disabled="disabled"><a>
-									<a class="jump">页</a> <input class="jump" name="" type="submit"
+									<a class="">页</a> <input class="jump" name="" type="submit"
 									value="跳转" style="width: 60px;"><a>
 						</table>
 					</form>

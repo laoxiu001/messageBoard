@@ -89,7 +89,7 @@
 </script>
 </head>
 <body>
-	<div class="container-fluid">
+	<div class="container" style="width: 1300px;">
 		<div id="top" class="row">
 			<div id="top_left" class="fl col-xs-6">
 				<a href="#"><img src="<%=basePath%>/img/logo1.png" alt="Logo"></a>
@@ -193,7 +193,7 @@
 									method="post">
 									<table width="100%">
 										<tr class="single">
-											<td width="80px">留言编号</td>
+											<td width="80px">序号</td>
 											<td>留言标题</td>
 											<td width="100px">留言时间</td>
 											<td width="150px">留言对象</td>
@@ -201,7 +201,7 @@
 										</tr>
 										<%
 											ListDao ls = new ListDao();
-										
+
 											request.setCharacterEncoding("UTF-8");//设置编码
 											String object = new String(request.getParameter("object"));//获取object
 											String sql = "";
@@ -232,6 +232,7 @@
 												pageIndex = totalPage;
 											}
 											Map map = null;
+												int number = 1;
 											for (int i = 14 * (pageIndex - 1); i < ((14 * pageIndex) < (ls.sum) ? (14 * pageIndex) : (ls.sum)); i++) {
 												map = (Map) ls.list.get(i);
 												if ((i % 2) == 0) {
@@ -240,7 +241,7 @@
 											onclick="window.document.location = 'Details.jsp?index=<%out.print(map.get("id"));%>'">
 											<td>
 												<%
-													out.print(map.get("id"));
+													out.print(i + 1);
 												%>
 											</td>
 											<td>
@@ -285,7 +286,7 @@
 											onclick="window.document.location = 'Details.jsp?index=<%out.print(map.get("id"));%>'">
 											<td>
 												<%
-													out.print(map.get("id"));
+													out.print(i + 1);
 												%>
 											</td>
 											<td>
@@ -347,16 +348,16 @@
 								<a class="button"
 									href="Principal.jsp?object=<%=object%>&pageIndex=<%=totalPage%>">末
 									页</a>
-								<a class="jump">第</a>
-								<input class="jump" name="pageIndex" type="text"
+								<a class="">第</a>
+								<input class="" name="pageIndex" type="text"
 									value="<%=pageIndex%>" style="width: 30px;">
-								<input class="jump" name="object" type="text"
-									value="<%=object%>" style="width: 30px; display: none;">
-								<a class="jump">页</a>&nbsp;/&nbsp;
-								<a class="jump">共</a>
-								<input class="jump" name="totalPage" type="text"
+								<input class="" name="object" type="text" value="<%=object%>"
+									style="width: 30px; display: none;">
+								<a class="">页</a>&nbsp;/&nbsp;
+								<a class="">共</a>
+								<input class="" name="totalPage" type="text"
 									value="<%=totalPage%>" style="width: 30px;" disabled="disabled">
-								<a class="jump">页</a>
+								<a class="">页</a>
 								<input class="jump" name="" type="submit" value="跳转"
 									style="width: 60px;">
 							</table>

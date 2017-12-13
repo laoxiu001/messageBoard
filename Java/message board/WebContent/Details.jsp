@@ -68,7 +68,7 @@
 	</script>
 </head>
 <body>
-<div class="container-fluid">
+<div class="container" style="width:1300px;">
 		<div id="top" class="row">
 			<div id="top_left" class="fl col-xs-6">
 				<a href="#"><img src="<%=basePath%>/img/logo1.png" alt="Logo"></a>

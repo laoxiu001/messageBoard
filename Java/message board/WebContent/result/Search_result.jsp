@@ -65,7 +65,7 @@
 	</script>
 </head>
 <body>
-<div class="container-fluid">
+<div class="container" style="width:1300px;">
 		<div id="top" class="row">
 			<div id="top_left" class="fl col-xs-6">
 				<a href="#"><img src="<%=basePath%>/img/logo1.png" alt="Logo"></a>
@@ -167,7 +167,11 @@
 							ListDao ls = new ListDao();
 
 							String select = request.getParameter("select"); //获得检索类型
-							String input = new String(request.getParameter("input").getBytes("ISO-8859-1"), "UTF-8");
+							
+							request.setCharacterEncoding("UTF-8");//设置编码
+							String input = new String(request.getParameter("input"));//获取object
+							
+							
 							String sql = "";
 							if (select.equals("id")) {
 								sql = "Select * from t_message where id = '" + input + "'";
@@ -287,17 +291,17 @@
 							<a class="button"
 								href="Search_result.jsp?pageIndex=<%=totalPage%>&select=<%=select%>&input=<%=input%>">末
 								页</a>
-							<a class="jump">第</a>
-							<input class="jump" name="pageIndex" type="text"
+							<a class="">第</a>
+							<input class="" name="pageIndex" type="text"
 								value="<%=pageIndex%>" style="width: 30px;">
-							<input class="jump" name="input" type="text" value="<%=input%>"
+							<input class="" name="input" type="text" value="<%=input%>"
 								style="width: 30px; display: none;">
-							<input class="jump" name="select" type="text" value="<%=select%>"
+							<input class="" name="select" type="text" value="<%=select%>"
 								style="width: 30px; display: none;">
-							<a> <a class="jump">页</a>&nbsp;/&nbsp; <a class="jump">共</a>
-								<input class="jump" name="totalPage" type="text"
+							<a> <a class="">页</a>&nbsp;/&nbsp; <a class="">共</a>
+								<input class="" name="totalPage" type="text"
 								value="<%=totalPage%>" style="width: 30px;" disabled="disabled"><a>
-									<a class="jump">页</a> <input class="jump" name="" type="submit"
+									<a class="">页</a> <input class="jump" name="" type="submit"
 									value="跳转" style="width: 60px;"><a>
 						</table>
 					</form>
