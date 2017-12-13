@@ -239,7 +239,7 @@
 		</div>
 
 		<!--  用户公告-->
-		<div class="announcement pull-left" style="margin-left:220px;">
+		<div class="announcement pull-left" style="margin-left:250px;">
 			<div style="padding-left:30px;padding-top:5px;">
 				<h3><img src="<%=basePath%>/img/admin/announcement.png">&nbsp&nbsp公告</h3>
 			</div>
