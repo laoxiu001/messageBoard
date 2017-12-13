@@ -54,7 +54,7 @@
 					</div>
 
 					<div id="left_visiable_userid">
-						<a>编号：${sss.session}</a>
+						<a>用 户：${sss.session}</a>
 					</div>
 
 					<div id="nav">

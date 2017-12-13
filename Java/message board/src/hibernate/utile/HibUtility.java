@@ -128,7 +128,7 @@ public class HibUtility {
 	//统计记录总条数方法
 	public int count(){
 		//hql语句
-		String hql ="from Message ";
+		String hql ="from Message where m_object2 = '数学与财经学院'";
 		Query query =(Query) session.createQuery(hql);
 		//实例list 存储结果集
 		int count = 0;

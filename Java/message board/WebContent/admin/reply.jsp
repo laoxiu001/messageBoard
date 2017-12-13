@@ -66,7 +66,7 @@
 					</div>
 
 					<div id="left_visiable_userid">
-						<a>编号：${sss.session} </a>
+						<a>用 户：${sss.session} </a>
 					</div>
 
 					<div id="nav">
@@ -96,7 +96,7 @@
 					<table style="width: 90%; margin: 0px auto;"
 						class="table table-striped table-hover table-bordered">
 						<tr class="success">
-							<td>留言编号</td>
+							<td>序号</td>
 							<td>标题</td>
 							<td>留言日期</td>
 							<td>留言类型</td>
@@ -105,7 +105,7 @@
 						</tr>
 						<s:iterator var="li" value="list" status="number">
 							<tr>
-								<td><s:property value="id" /></td>
+								<td><s:property value="#number.index + 1" /></td>
 								<td><s:property value="title" /></td>
 								<td><s:property value="m_time" /></td>
 								<td><s:property value="type" /></td>
