@@ -10,8 +10,8 @@ import java.sql.SQLException;
 public class BaseDao {
 	static String driver = "com.mysql.jdbc.Driver";
 	static String url = "jdbc:mysql://localhost:3306/sc?characterEncoding=UTF-8";
-	static String user = "root";
-	static String password = "root";
+	static String user = "sc";
+	static String password = "sc";
 
 	public static Connection getConn() throws ClassNotFoundException,SQLException {
 		/*

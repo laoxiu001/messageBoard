@@ -211,7 +211,6 @@ public class LoginAction extends ActionSupport implements RequestAware,SessionAw
 		hib.getSession();
 		String i = ServletActionContext.getRequest().getSession().getAttribute("id").toString();
 		if(hib.inf_p(user,i) || hib.inf_p(user,"1")){
-		System.out.println("department="+department);
 		hib.inf_u(user, department, tel, email,id);
 		tishi = "信息修改成功";
 		}else{
@@ -310,7 +309,6 @@ public class LoginAction extends ActionSupport implements RequestAware,SessionAw
 			}
 		}
 		map.put("sss",this);
-		System.out.println("p="+p);
 		List<Message> list = hib.getSelect(p-1);
 		hib.allclose();
 		ActionContext.getContext().put("list", list);

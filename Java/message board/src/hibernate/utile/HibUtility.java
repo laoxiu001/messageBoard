@@ -56,7 +56,6 @@ public class HibUtility {
 		query.setFirstResult(page * 10);//设置起始行数，从0开始计数
 		query.setMaxResults(10);//设置返回的行数
 		List<Message> list = query.list();
-		System.out.println("page=" + page);
 
 		return list;
 	}
@@ -64,14 +63,11 @@ public class HibUtility {
 	//获取指定id的留言内容
 	public List<Message> getMessage(int id){
 		//hql语句
-		System.out.println("hql开始");
 		String hql ="from Message message where id = :id order by message.id";
-		System.out.println("hql结束");
 		Query query =(Query) session.createQuery(hql);
 		query.setInteger("id", id);
 		//实例list 存储结果集
 		List<Message> list = query.list();
-		System.out.println("用户查询id = " + id);
 
 		return list;
 	}
@@ -80,7 +76,6 @@ public class HibUtility {
 			//hql语句
 			boolean b = true;
 			int id = Integer.parseInt(id_1);
-			System.out.println("id="+id);
 			String hql ="from User where user = :user ";
 			Query query =(Query) session.createQuery(hql);
 			//实例list 存储结果集
@@ -99,7 +94,6 @@ public class HibUtility {
 	public List<User> inf(String id_1){
 		//hql语句
 		int id = Integer.parseInt(id_1);
-		System.out.println("id="+id);
 		String hql ="from User where id = :id ";
 		Query query =(Query) session.createQuery(hql);
 		//实例list 存储结果集
@@ -118,7 +112,6 @@ public class HibUtility {
 		qupdete.setParameter("tel", tel);
 		qupdete.setParameter("email", email);
 		qupdete.setParameter("id", id);
-		System.out.println(hql);
 		int i =qupdete.executeUpdate();
 		if(i!=0){
 			b = true;
@@ -134,10 +127,8 @@ public class HibUtility {
 		int count = 0;
 		List<Message> list = query.list();
 		for (Message l : list) {
-			System.out.println(l.getId());
 			count++;
 		}
-		System.out.println("count=" + count);
 		return count;
 	}
 
@@ -151,7 +142,6 @@ public class HibUtility {
 		int id = Integer.parseInt(id_1);
 		query.setParameter("id", id);
 		query.setParameter("password", password);
-		System.out.println("password="+password+"id="+id);
 		List<User> list = query.list();
 		for(User l : list){
 			count = 1;
@@ -176,8 +166,6 @@ public class HibUtility {
 			}else{
 				j++;
 			}
-			System.out.println("已回复内容i = " + i);
-			System.out.println("未回复内容j = " + j);
 			if(m.getType().toString().equals("咨询")){
 				a++;
 			}else if(m.getType().toString().equals("建议")){
@@ -203,7 +191,6 @@ public class HibUtility {
 		qdelete.setParameter("id",id);
 		//执行
 		int i = qdelete.executeUpdate();
-		System.out.println(i);
 		if(i!=0){
 			fleat = true;
 		}
@@ -257,7 +244,6 @@ public class HibUtility {
 		qupdate.setParameter("id", id);
 		//执行
 		int i=qupdate.executeUpdate();
-		System.out.println(i);
 		if(i!=0){
 			fleat = true;
 		}
@@ -282,7 +268,6 @@ public class HibUtility {
 		qupdate.setParameter("password", password);
 		//执行
 		int i=qupdate.executeUpdate();
-		System.out.println(i);
 		if(i!=0){
 			fleat = true;
 		}
@@ -305,7 +290,6 @@ public class HibUtility {
 		String hql;
 		if(!m_object.equals("false,false") && m_object!=null){
 			hql ="update Message set reply = :reply, r_content = :r_content, m_object1 = :m_object1, m_object2 = :m_object2, r_time = :r_time where id = :id";
-			System.out.println("运行第一句");
 
 			//给各字段赋值
 			qupdate =session.createQuery(hql); 
@@ -317,7 +301,6 @@ public class HibUtility {
 			qupdate.setParameter("r_time", r_time);
 		}else{
 			hql ="update Message set reply = :reply, r_content = :r_content, r_time = :r_time where id = :id";
-			System.out.println("运行第二句");
 
 			//给各字段赋值
 			qupdate =session.createQuery(hql); 
@@ -327,7 +310,6 @@ public class HibUtility {
 			qupdate.setParameter("r_time", r_time);
 		}
 		int i=qupdate.executeUpdate();
-		System.out.println(i);
 		if(i!=0){
 			fleat = true;
 		}
@@ -350,7 +332,6 @@ public class HibUtility {
 		qupdate.setParameter("id", id);
 		//执行
 		int i=qupdate.executeUpdate();
-		System.out.println(i);
 		if(i!=0){
 			fleat = true;
 		}

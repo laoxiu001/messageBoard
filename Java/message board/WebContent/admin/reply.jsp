@@ -105,7 +105,7 @@
 						</tr>
 						<s:iterator var="li" value="list" status="number">
 							<tr>
-								<td><s:property value="#number.index + 1" /></td>
+								<td><s:property value="#number.count + (p-1)*10" /></td>
 								<td><s:property value="title" /></td>
 								<td><s:property value="m_time" /></td>
 								<td><s:property value="type" /></td>

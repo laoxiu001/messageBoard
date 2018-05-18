@@ -89,7 +89,6 @@ public class ReplyAction extends ActionSupport implements RequestAware{
 		hib_1.getUpdate(id);
 		hib_1.allclose();
 		map.put("sss", this);
-		System.out.println("ReplyAction方法结束");
 		return "success";
 	}
 	
@@ -98,8 +97,6 @@ public class ReplyAction extends ActionSupport implements RequestAware{
 			hib.getSession();
 			hib.getUpdate(id,reply,r_content,m_object);
 			hib.allclose();
-			System.out.println("--------------------------------");
-			System.out.println(m_object);
 			map.put("sss", this);
 			return "success";
 	}
